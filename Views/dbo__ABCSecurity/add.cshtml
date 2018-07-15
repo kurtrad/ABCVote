@@ -1,0 +1,198 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<!doctype html>@(new HtmlString(MVCFunctions.GetBuferContentAndClearBufer()))
+<HTML @(Model.displayVar("html_attrs"))>
+	<head>
+		<META http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<title>@(Model.displayVar("pagetitle"))</title>
+
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<LINK REL="stylesheet" href="@(webRootPath)styles/default.css" type="text/css" />
+		@foreach (string _rtlCSS in Model.GetSection("rtlCSS", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)styles/defaultRTL.css" type="text/css" />
+		}
+		@foreach (string _styleCSSFiles in Model.GetSection("styleCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("stylepath"))" type="text/css" />
+		}
+		@foreach (string _pageCSSFiles in Model.GetSection("pageCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("pagestylepath"))" type="text/css" />
+		}
+	</head>
+	
+	<BODY class="@(Model.displayVar("stylename")) function-add" @(Model.displayVar("bodyattrs"))>
+	@foreach (string _body in Model.GetSection("body", this)){
+		{Html.RenderSharedView("header");}
+	<div class="rnr-page">
+		<DIV class="rnr-top @(Model.displayVar("blockclass_top"))">
+			
+
+@foreach (string _container_all in Model.GetSection("container_all", this)){
+<div class="rnr-c rnr-cv rnr-c-all">
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-wrapper @(Model.displayVar("wrapperclass_master")) rnr-wrapper rnr-cbw-master">
+
+@foreach (string _container_master in Model.GetSection("container_master", this)){
+<div class="rnr-c rnr-cv rnr-c-master">
+
+@foreach (string _mastertable_block in Model.GetSection("mastertable_block", this)){
+<DIV class="rnr-brickcontents style1 rnr-b-masterinfo @(Model.displayVar("brickclass_masterinfo"))">@(Model.displayVar("showmasterfile"))
+<A class="runner-link" @(Model.displayVar("backtomasterlink_attrs"))>
+	<b>Back to @(Model.displayVar("backtomasterlink_caption"))</b>
+</a></div>}
+
+
+</div>
+}
+
+</div>
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-wrapper @(Model.displayVar("wrapperclass_add")) rnr-wrapper rnr-cbw-add">
+
+@foreach (string _container_add in Model.GetSection("container_add", this)){
+<div class="rnr-c rnr-cv rnr-c-add">
+
+@foreach (string _addheader in Model.GetSection("addheader", this)){
+<DIV class="rnr-brickcontents style2 rnr-b-addheader @(Model.displayVar("brickclass_addheader"))"><span>	<h1>@(Model.displayVar("pagetitlelabel dbo__ABCSecurity add"))</h1>
+</span></div>}
+
+
+@foreach (string _message_block in Model.GetSection("message_block", this)){
+<DIV class="rnr-brickcontents style1 rnr-b-message @(Model.displayVar("brickclass_message"))"><div class="rnr-message">@(Model.displayVar("message"))</div></div>}
+
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-wrapper @(Model.displayVar("wrapperclass_fields")) rnr-wrapper rnr-cbw-fields">
+
+@foreach (string _container_fields in Model.GetSection("container_fields", this)){
+<div class="rnr-c rnr-cv rnr-c-fields">
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-addfields @(Model.displayVar("brickclass_addfields"))"><table class="fieldGrid">
+	@foreach (string _byear_fieldblock in Model.GetSection("byear_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_byear"))" data-fieldname="byear">
+	<td class="rnr-label">
+		@foreach (string _byear_label in Model.GetSection("byear_label", this)){@(Model.displayVar("label dbo__ABCSecurity byear"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("byear_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _eyear_fieldblock in Model.GetSection("eyear_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_eyear"))" data-fieldname="eyear">
+	<td class="rnr-label">
+		@foreach (string _eyear_label in Model.GetSection("eyear_label", this)){@(Model.displayVar("label dbo__ABCSecurity eyear"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("eyear_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _username_fieldblock in Model.GetSection("username_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_username"))" data-fieldname="username">
+	<td class="rnr-label">
+		@foreach (string _username_label in Model.GetSection("username_label", this)){@(Model.displayVar("label dbo__ABCSecurity username"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("username_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _password_fieldblock in Model.GetSection("password_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_password"))" data-fieldname="password">
+	<td class="rnr-label">
+		@foreach (string _password_label in Model.GetSection("password_label", this)){@(Model.displayVar("label dbo__ABCSecurity password"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("password_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _role_fieldblock in Model.GetSection("role_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_role"))" data-fieldname="role">
+	<td class="rnr-label">
+		@foreach (string _role_label in Model.GetSection("role_label", this)){@(Model.displayVar("label dbo__ABCSecurity role"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("role_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+</table></div>
+
+
+@foreach (string _addbuttons in Model.GetSection("addbuttons", this)){
+<DIV class="rnr-brickcontents style2 rnr-b-addbuttons @(Model.displayVar("brickclass_addbuttons"))"><div class="rnr-buttons-left">
+		@foreach (string _save_button in Model.GetSection("save_button", this)){
+	<A href="#" class="rnr-button main" id="saveButton@(Model.displayVar("id"))" @(Model.displayVar("savebutton_attrs"))>Save</a>
+	}
+	@foreach (string _reset_button in Model.GetSection("reset_button", this)){
+	<A href="#" class="rnr-button" id="resetButton@(Model.displayVar("id"))">Reset</a>
+	}
+	@foreach (string _cancel_button in Model.GetSection("cancel_button", this)){
+	<A href="#" class="rnr-button" id="cancelButton@(Model.displayVar("id"))">Cancel</a>
+	}
+	@foreach (string _back_button in Model.GetSection("back_button", this)){
+	<A href="#" class="rnr-button" id="backButton@(Model.displayVar("id"))">Back to list</a>
+	}
+	@foreach (string _backToMenu_button in Model.GetSection("backToMenu_button", this)){
+	<A href="#" class="rnr-button" id="backToMenuButton@(Model.displayVar("id"))">Back to menu</a>
+	}
+</div>
+</div>}
+
+
+</div>
+}
+
+</div>
+
+
+</div>
+}
+
+</div>
+
+
+
+</div>
+}
+
+
+		</div>
+		<div class="rnr-middle">
+			<DIV class="rnr-left @(Model.displayVar("blockclass_left"))">
+				
+			</div>
+			<DIV class="rnr-center @(Model.displayVar("blockclass_center"))">
+				
+			</div>
+			<DIV class="rnr-right @(Model.displayVar("blockclass_right"))">
+				
+			</div>
+		</div>
+		<DIV class="rnr-bottom @(Model.displayVar("blockclass_bottom"))">
+			
+		</div>
+	</div>
+		
+		{Html.RenderSharedView("footer");}
+	}
+	</body>
+</html>

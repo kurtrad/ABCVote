@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <OldToolsVersion>4.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{64FFBE60-C56A-4f53-85EF-829D7A32391C}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>runnerDotNet</RootNamespace>
+    <AssemblyName>runnerDotNet</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="JWT, Version=1.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>bin\JWT.dll</HintPath>
+    </Reference>
+    <Reference Include="Twilio, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>bin\Twilio.dll</HintPath>
+    </Reference>
+    <Reference Include="BCrypt.Net, Version=0.1.4141.31969, Culture=neutral, PublicKeyToken=f3bc8f8c31beeb49, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\BCrypt.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>bin\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>bin\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.1.0.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="LumenWorks.Framework.IO, Version=3.8.0.0, Culture=neutral, PublicKeyToken=5ad3ea2f85776344, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\LumenWorks.Framework.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Interop.ADODB, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Interop.ADODB.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.CDO, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Interop.CDO.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="autocomplete.cs" />
+    <Compile Include="buttonhandler.cs" />
+    <Compile Include="checkduplicates.cs" />
+    <Compile Include="Classes\addpage.cs" />
+    <Compile Include="Classes\advancedsearchcontrol.cs" />
+    <Compile Include="classes\button.cs" />
+    <Compile Include="Classes\chartpage.cs" />
+    <Compile Include="classes\chartpage_master.cs" />
+    <Compile Include="Classes\charts.cs" />
+    <Compile Include="Classes\cipherer.cs" />
+    <Compile Include="Classes\ciphereraes.cs" />
+    <Compile Include="Classes\ConnectionsPool.cs" />
+    <Compile Include="Classes\context.cs" />
+    <Compile Include="classes\controls\CheckboxField.cs" />
+    <Compile Include="classes\controls\Control.cs" />
+    <Compile Include="classes\controls\DatabaseFileField.cs" />
+    <Compile Include="classes\controls\DateField.cs" />
+    <Compile Include="classes\controls\DateTimeControl.cs" />
+    <Compile Include="classes\controls\EditControlsContainer.cs" />
+    <Compile Include="classes\controls\FileField.cs" />
+    <Compile Include="classes\controls\FileFieldSingle.cs" />
+    <Compile Include="classes\controls\FilterBoolean.cs" />
+    <Compile Include="classes\controls\FilterControl.cs" />
+    <Compile Include="classes\controls\FilterIntervalDateSlider.cs" />
+    <Compile Include="classes\controls\FilterIntervalList.cs" />
+    <Compile Include="classes\controls\FilterIntervalSlider.cs" />
+    <Compile Include="classes\controls\FilterIntervalTimeSlider.cs" />
+    <Compile Include="classes\controls\FilterValuesList.cs" />
+    <Compile Include="classes\controls\HiddenField.cs" />
+    <Compile Include="classes\controls\LookupField.cs" />
+    <Compile Include="classes\controls\LookupTextField.cs" />
+    <Compile Include="classes\controls\PasswordField.cs" />
+    <Compile Include="classes\controls\ReadOnlyField.cs" />
+    <Compile Include="classes\controls\TextAreaField.cs" />
+    <Compile Include="classes\controls\TextControl.cs" />
+    <Compile Include="classes\controls\TextField.cs" />
+    <Compile Include="classes\controls\TimeField.cs" />
+    <Compile Include="classes\controls\UserControl.cs" />
+    <Compile Include="classes\controls\ViewAudioFileField.cs" />
+    <Compile Include="classes\controls\ViewCheckboxField.cs" />
+    <Compile Include="classes\controls\ViewControl.cs" />
+    <Compile Include="classes\controls\ViewControlsContainer.cs" />
+    <Compile Include="classes\controls\ViewCurrencyField.cs" />
+    <Compile Include="classes\controls\ViewCustomField.cs" />
+    <Compile Include="classes\controls\ViewDatabaseAudioField.cs" />
+    <Compile Include="classes\controls\ViewDatabaseFileField.cs" />
+    <Compile Include="classes\controls\ViewDatabaseImageField.cs" />
+    <Compile Include="classes\controls\ViewDatabaseVideoField.cs" />
+    <Compile Include="classes\controls\ViewDatetimeField.cs" />
+    <Compile Include="classes\controls\ViewEmailHyperlinkField.cs" />
+    <Compile Include="classes\controls\ViewFileDownloadField.cs" />
+    <Compile Include="classes\controls\ViewFileField.cs" />
+    <Compile Include="classes\controls\ViewHTMLField.cs" />
+    <Compile Include="classes\controls\ViewHyperlinkField.cs" />
+    <Compile Include="classes\controls\ViewImageDownloadField.cs" />
+    <Compile Include="classes\controls\ViewLongDateField.cs" />
+    <Compile Include="classes\controls\ViewLookupWizardField.cs" />
+    <Compile Include="classes\controls\ViewMapField.cs" />
+    <Compile Include="classes\controls\ViewNumberField.cs" />
+    <Compile Include="classes\controls\ViewPercentField.cs" />
+    <Compile Include="classes\controls\ViewPhoneNumberField.cs" />
+    <Compile Include="classes\controls\ViewShortDateField.cs" />
+    <Compile Include="classes\controls\ViewTimeField.cs" />
+    <Compile Include="classes\controls\ViewUserControl.cs" />
+    <Compile Include="classes\controls\ViewVideoFileField.cs" />
+    <Compile Include="Classes\crosstable_report.cs" />
+    <Compile Include="classes\dashboardpage.cs" />
+    <Compile Include="Classes\db.cs" />
+    <Compile Include="Classes\DynamicContentGeneratorBase.cs" />
+    <Compile Include="Classes\editpage.cs" />
+    <Compile Include="Classes\editselectedpage.cs" />
+    <Compile Include="Classes\ExportFunctions.cs" />
+    <Compile Include="classes\exportpage.cs" />
+    <Compile Include="classes\files.cs" />
+    <Compile Include="classes\filterpanel.cs" />
+    <Compile Include="classes\GlobalVars.cs" />
+    <Compile Include="Classes\ImportFunctions.cs" />
+    <Compile Include="classes\importpage.cs" />
+    <Compile Include="Classes\labels.cs" />
+    <Compile Include="Classes\layout.cs" />
+    <Compile Include="Classes\listpage.cs" />
+    <Compile Include="Classes\listpage_ajax.cs" />
+    <Compile Include="classes\listpage_dashboard.cs" />
+    <Compile Include="Classes\listpage_dpdash.cs" />
+    <Compile Include="Classes\listpage_dpinline.cs" />
+    <Compile Include="Classes\listpage_dplist.cs" />
+    <Compile Include="Classes\listpage_embed.cs" />
+    <Compile Include="Classes\listpage_lookup.cs" />
+    <Compile Include="Classes\listpage_master.cs" />
+    <Compile Include="Classes\listpage_simple.cs" />
+    <Compile Include="Classes\loginpage.cs" />
+    <Compile Include="classes\map_dashboard.cs" />
+    <Compile Include="Classes\memberspage.cs" />
+    <Compile Include="Classes\orderclause.cs" />
+    <Compile Include="Classes\panelsearchcontrol.cs" />
+    <Compile Include="classes\paramsLogger.cs" />
+    <Compile Include="classes\printpage.cs" />
+    <Compile Include="classes\printpage_details.cs" />
+    <Compile Include="Classes\printpage_master.cs" />
+    <Compile Include="Classes\projectsettings.cs" />
+    <Compile Include="Classes\reportlib.cs" />
+    <Compile Include="classes\reportpage.cs" />
+    <Compile Include="classes\reportprintpage.cs" />
+    <Compile Include="Classes\rightspage.cs" />
+    <Compile Include="Classes\RunnerCiphererDES.cs" />
+    <Compile Include="Classes\runnerpage.cs" />
+    <Compile Include="Classes\RunnerRazor.cs" />
+    <Compile Include="Classes\RunnerReader.cs" />
+    <Compile Include="Classes\searchclause.cs" />
+    <Compile Include="Classes\searchclause_base.cs" />
+    <Compile Include="Classes\searchcontrol.cs" />
+    <Compile Include="Classes\searchpage.cs" />
+    <Compile Include="classes\searchpage_dash.cs" />
+    <Compile Include="Classes\searchpanel.cs" />
+    <Compile Include="Classes\searchpanellookup.cs" />
+    <Compile Include="Classes\searchpanelsimple.cs" />
+    <Compile Include="classes\searchParamsLogger.cs" />
+    <Compile Include="Classes\security.cs" />
+    <Compile Include="Classes\sql.cs" />
+    <Compile Include="Classes\tDal.cs" />
+    <Compile Include="classes\uploadhandler.cs" />
+    <Compile Include="classes\viewpage.cs" />
+    <Compile Include="Classes\XClass.cs" />
+    <Compile Include="Classes\xml.cs" />
+    <Compile Include="classes\XSession.cs" />
+    <Compile Include="classes\xtempl.cs" />
+    <Compile Include="classes\xtempl_base.cs" />
+    <Compile Include="Classes\XVar.cs" />
+    <Compile Include="classes\XVarExtensions.cs" />
+    <Compile Include="combo.cs" />
+    <Compile Include="connections\Connection.cs" />
+    <Compile Include="connections\ConnectionManager.cs" />
+    <Compile Include="connections\dbfunctions\DBFunctions.cs" />
+    <Compile Include="connections\dbfunctions\MSSQLFunctions.cs" />
+    <Compile Include="connections\dbfunctions\ODBCFunctions.cs" />
+    <Compile Include="connections\dbfunctions_legacy.cs" />
+    <Compile Include="connections\dbinfo\DBInfo.cs" />
+    <Compile Include="connections\dbinfo\MSSQLInfo.cs" />
+    <Compile Include="connections\dbinfo\ODBCInfo.cs" />
+    <Compile Include="connections\dbinfo\OLEDBInfo.cs" />
+    <Compile Include="connections\MSSQLConnection.cs" />
+    <Compile Include="connections\ODBCConnection.cs" />
+    <Compile Include="connections\OLEDBConnection.cs" />
+    <Compile Include="connections\QueryResult.cs" />
+    <Compile Include="Controllers\ABC_Voting_Batch_Create\edit.cs" />
+    <Compile Include="Controllers\ABC_Voting_Batch_Create\export.cs" />
+    <Compile Include="Controllers\ABC_Voting_Batch_Create\import.cs" />
+    <Compile Include="Controllers\ABC_Voting_Batch_Create\list.cs" />
+    <Compile Include="Controllers\ABC_Voting_Batch_Create\print.cs" />
+    <Compile Include="Controllers\ABC_Voting_Batch_Create\search.cs" />
+    <Compile Include="Controllers\ABC_Voting_Batch_Create\view.cs" />
+    <Compile Include="Controllers\ABC_Voting_My_Voting\add.cs" />
+    <Compile Include="Controllers\ABC_Voting_My_Voting\edit.cs" />
+    <Compile Include="Controllers\ABC_Voting_My_Voting\export.cs" />
+    <Compile Include="Controllers\ABC_Voting_My_Voting\import.cs" />
+    <Compile Include="Controllers\ABC_Voting_My_Voting\list.cs" />
+    <Compile Include="Controllers\ABC_Voting_My_Voting\print.cs" />
+    <Compile Include="Controllers\ABC_Voting_My_Voting\search.cs" />
+    <Compile Include="Controllers\ABC_Voting_My_Voting\view.cs" />
+    <Compile Include="Controllers\ABC_Voting_Recirculated1\add.cs" />
+    <Compile Include="Controllers\ABC_Voting_Recirculated1\edit.cs" />
+    <Compile Include="Controllers\ABC_Voting_Recirculated1\export.cs" />
+    <Compile Include="Controllers\ABC_Voting_Recirculated1\import.cs" />
+    <Compile Include="Controllers\ABC_Voting_Recirculated1\list.cs" />
+    <Compile Include="Controllers\ABC_Voting_Recirculated1\print.cs" />
+    <Compile Include="Controllers\ABC_Voting_Recirculated1\search.cs" />
+    <Compile Include="Controllers\ABC_Voting_Recirculated1\view.cs" />
+    <Compile Include="Controllers\ABC_Voting_Submitted1\add.cs" />
+    <Compile Include="Controllers\ABC_Voting_Submitted1\edit.cs" />
+    <Compile Include="Controllers\ABC_Voting_Submitted1\export.cs" />
+    <Compile Include="Controllers\ABC_Voting_Submitted1\import.cs" />
+    <Compile Include="Controllers\ABC_Voting_Submitted1\list.cs" />
+    <Compile Include="Controllers\ABC_Voting_Submitted1\print.cs" />
+    <Compile Include="Controllers\ABC_Voting_Submitted1\search.cs" />
+    <Compile Include="Controllers\ABC_Voting_Submitted1\view.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BuildpdfController.cs" />
+    <Compile Include="Controllers\dbo__ABCReports\add.cs" />
+    <Compile Include="Controllers\dbo__ABCReports\edit.cs" />
+    <Compile Include="Controllers\dbo__ABCReports\export.cs" />
+    <Compile Include="Controllers\dbo__ABCReports\import.cs" />
+    <Compile Include="Controllers\dbo__ABCReports\list.cs" />
+    <Compile Include="Controllers\dbo__ABCReports\print.cs" />
+    <Compile Include="Controllers\dbo__ABCReports\search.cs" />
+    <Compile Include="Controllers\dbo__ABCReports\view.cs" />
+    <Compile Include="Controllers\dbo__ABCSecurity\add.cs" />
+    <Compile Include="Controllers\dbo__ABCSecurity\edit.cs" />
+    <Compile Include="Controllers\dbo__ABCSecurity\export.cs" />
+    <Compile Include="Controllers\dbo__ABCSecurity\import.cs" />
+    <Compile Include="Controllers\dbo__ABCSecurity\list.cs" />
+    <Compile Include="Controllers\dbo__ABCSecurity\print.cs" />
+    <Compile Include="Controllers\dbo__ABCSecurity\search.cs" />
+    <Compile Include="Controllers\dbo__ABCSecurity\view.cs" />
+    <Compile Include="Controllers\dbo__ABCVotes\add.cs" />
+    <Compile Include="Controllers\dbo__ABCVotes\detailspreview.cs" />
+    <Compile Include="Controllers\dbo__ABCVotes\edit.cs" />
+    <Compile Include="Controllers\dbo__ABCVotes\export.cs" />
+    <Compile Include="Controllers\dbo__ABCVotes\import.cs" />
+    <Compile Include="Controllers\dbo__ABCVotes\list.cs" />
+    <Compile Include="Controllers\dbo__ABCVotes\print.cs" />
+    <Compile Include="Controllers\dbo__ABCVotes\search.cs" />
+    <Compile Include="Controllers\dbo_vwABCReportsVoteCount\edit.cs" />
+    <Compile Include="Controllers\dbo_vwABCReportsVoteCount\export.cs" />
+    <Compile Include="Controllers\dbo_vwABCReportsVoteCount\list.cs" />
+    <Compile Include="Controllers\dbo_vwABCReportsVoteCount\print.cs" />
+    <Compile Include="Controllers\dbo_vwABCReportsVoteCount\search.cs" />
+    <Compile Include="detreccount.cs" />
+    <Compile Include="fulltext.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ie8css.cs" />
+    <Compile Include="imager.cs" />
+    <Compile Include="include\ABC_Voting_Batch_Create_settings.cs" />
+    <Compile Include="include\ABC_Voting_Batch_Create_variables.cs" />
+    <Compile Include="include\ABC_Voting_My_Voting_EventsAggregator.cs" />
+    <Compile Include="include\ABC_Voting_My_Voting_settings.cs" />
+    <Compile Include="include\ABC_Voting_My_Voting_variables.cs" />
+    <Compile Include="include\ABC_Voting_Recirculated1_settings.cs" />
+    <Compile Include="include\ABC_Voting_Recirculated1_variables.cs" />
+    <Compile Include="include\ABC_Voting_Submitted1_settings.cs" />
+    <Compile Include="include\ABC_Voting_Submitted1_variables.cs" />
+    <Compile Include="include\appsettings.cs" />
+    <Compile Include="include\audit.cs" />
+    <Compile Include="include\commonfunctions.cs" />
+    <Compile Include="include\CustomExpressionsAggregator.cs" />
+    <Compile Include="include\dal\azfo_at_radamakerlaptop_dbo__ABCReports.cs" />
+    <Compile Include="include\dal\azfo_at_radamakerlaptop_dbo__ABCSecurity.cs" />
+    <Compile Include="include\dal\azfo_at_radamakerlaptop_dbo__ABCVotes.cs" />
+    <Compile Include="include\dal\azfo_at_radamakerlaptop_dbo_vwABCReportsVoteCount.cs" />
+    <Compile Include="include\dbo__ABCReports_settings.cs" />
+    <Compile Include="include\dbo__ABCReports_variables.cs" />
+    <Compile Include="include\dbo__ABCSecurity_settings.cs" />
+    <Compile Include="include\dbo__ABCSecurity_variables.cs" />
+    <Compile Include="include\dbo__ABCVotes_EventsAggregator.cs" />
+    <Compile Include="include\dbo__ABCVotes_settings.cs" />
+    <Compile Include="include\dbo__ABCVotes_variables.cs" />
+    <Compile Include="include\dbo_vwABCReportsVoteCount_settings.cs" />
+    <Compile Include="include\dbo_vwABCReportsVoteCount_variables.cs" />
+    <Compile Include="include\displaymenu.cs" />
+    <Compile Include="include\EventsAggregatorGlobal.cs" />
+    <Compile Include="include\export_functions.cs" />
+    <Compile Include="include\lang\English.cs" />
+    <Compile Include="include\languages.cs" />
+    <Compile Include="include\locale.cs" />
+    <Compile Include="include\LocaleFunctions.cs" />
+    <Compile Include="include\locking.cs" />
+    <Compile Include="include\lookuplinks.cs" />
+    <Compile Include="include\menuitem.cs" />
+    <Compile Include="include\menunodes_main.cs" />
+    <Compile Include="include\menunodes_welcome_page.cs" />
+    <Compile Include="include\MVCFunctions.cs" />
+    <Compile Include="include\reportfunctions.cs" />
+    <Compile Include="index.cs" />
+    <Compile Include="login.cs" />
+    <Compile Include="lookupsuggest.cs" />
+    <Compile Include="menu.cs" />
+    <Compile Include="mfhandler.cs" />
+    <Compile Include="rte.cs" />
+    <Compile Include="searchsuggest.cs" />
+    <Compile Include="securitycode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ABCVote2016v98EventsCS.csproj" />
+    <Content Include="ABCVote2016v98EventsVB.vbproj" />
+    <Content Include="ABCVote2016v98Solution.sln" />
+    <Content Include="bin\adodb.dll" />
+    <Content Include="bin\BCrypt.Net.dll" />
+    <Content Include="bin\cdosys.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\EPPlus.dll" />
+    <Content Include="bin\Interop.ADODB.dll" />
+    <Content Include="bin\Interop.CDO.dll" />
+    <Content Include="bin\JWT.dll" />
+    <Content Include="bin\LumenWorks.Framework.IO.dll" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\Twilio.dll" />
+    <Content Include="bin\wkhtmltopdf\libeay32.dll" />
+    <Content Include="bin\wkhtmltopdf\libgcc_s_dw2-1.dll" />
+    <Content Include="bin\wkhtmltopdf\mingwm10.dll" />
+    <Content Include="bin\wkhtmltopdf\ssleay32.dll" />
+    <Content Include="bin\wkhtmltopdf\wkhtmltopdf.exe" />
+    <Content Include="classes\tDAL.cs.bak" />
+    <Content Include="dll\oracle\Oracle.DataAccess.dll" />
+    <Content Include="dll\oracle\x64\Oracle.ManagedDataAccessDTC.dll" />
+    <Content Include="dll\oracle\x64\Oracle.ManagedDataAccessIOP.dll" />
+    <Content Include="dll\oracle\x86\Oracle.ManagedDataAccessDTC.dll" />
+    <Content Include="dll\oracle\x86\Oracle.ManagedDataAccessIOP.dll" />
+    <Content Include="fonts\OpenSans\Apache License.txt" />
+    <Content Include="fonts\OpenSans\web fonts\OpenSans-Semibold-webfont.eot" />
+    <Content Include="fonts\OpenSans\web fonts\OpenSans-Semibold-webfont.svg" />
+    <Content Include="fonts\OpenSans\web fonts\OpenSans-Semibold-webfont.ttf" />
+    <Content Include="fonts\OpenSans\web fonts\OpenSans-Semibold-webfont.woff" />
+    <Content Include="fonts\runner2.dev.svg" />
+    <Content Include="fonts\runner2.eot" />
+    <Content Include="fonts\runner2.svg" />
+    <Content Include="fonts\runner2.ttf" />
+    <Content Include="fonts\runner2woff.ttf" />
+    <Content Include="Global.asax" />
+    <Content Include="images\arrows.png" />
+    <Content Include="images\bullet.gif" />
+    <Content Include="images\cal.gif" />
+    <Content Include="images\cancel.gif" />
+    <Content Include="images\centeralign.jpg" />
+    <Content Include="images\check_no.gif" />
+    <Content Include="images\check_yes.gif" />
+    <Content Include="images\clock.gif" />
+    <Content Include="images\cross.gif" />
+    <Content Include="images\csv.gif" />
+    <Content Include="images\dataPicker\calgrad.png" />
+    <Content Include="images\dataPicker\callt.gif" />
+    <Content Include="images\dataPicker\calrt.gif" />
+    <Content Include="images\dataPicker\calx.gif" />
+    <Content Include="images\dataPicker\layout_sprite.png" />
+    <Content Include="images\dataPicker\sprite.png" />
+    <Content Include="images\disable_fon.gif" />
+    <Content Include="images\down.gif" />
+    <Content Include="images\excel.gif" />
+    <Content Include="images\file.gif" />
+    <Content Include="images\icon_copy.gif" />
+    <Content Include="images\icon_copy_new.gif" />
+    <Content Include="images\icon_delete.gif" />
+    <Content Include="images\icon_edit.gif" />
+    <Content Include="images\icon_edit_new.gif" />
+    <Content Include="images\icon_inline_edit_new.gif" />
+    <Content Include="images\icon_key.gif" />
+    <Content Include="images\icon_required.gif" />
+    <Content Include="images\icon_view.gif" />
+    <Content Include="images\icon_view_new.gif" />
+    <Content Include="images\icons\7z.png" />
+    <Content Include="images\icons\asf.png" />
+    <Content Include="images\icons\chm.png" />
+    <Content Include="images\icons\code.png" />
+    <Content Include="images\icons\doc.png" />
+    <Content Include="images\icons\flv.png" />
+    <Content Include="images\icons\gif.png" />
+    <Content Include="images\icons\gYellowMarker.png" />
+    <Content Include="images\icons\gz.png" />
+    <Content Include="images\icons\html.png" />
+    <Content Include="images\icons\jpg.png" />
+    <Content Include="images\icons\mdb.png" />
+    <Content Include="images\icons\mov.png" />
+    <Content Include="images\icons\mp2.png" />
+    <Content Include="images\icons\mp4.png" />
+    <Content Include="images\icons\mpeg.png" />
+    <Content Include="images\icons\mpg.png" />
+    <Content Include="images\icons\pdf.png" />
+    <Content Include="images\icons\png.png" />
+    <Content Include="images\icons\poi_custom.png" />
+    <Content Include="images\icons\powerpoint.png" />
+    <Content Include="images\icons\pps.png" />
+    <Content Include="images\icons\psd.png" />
+    <Content Include="images\icons\rar.png" />
+    <Content Include="images\icons\rtf.png" />
+    <Content Include="images\icons\swf.png" />
+    <Content Include="images\icons\text.png" />
+    <Content Include="images\icons\tif.png" />
+    <Content Include="images\icons\ttf.png" />
+    <Content Include="images\icons\txt.png" />
+    <Content Include="images\icons\wav-32_32.png" />
+    <Content Include="images\icons\wav.png" />
+    <Content Include="images\icons\wma.png" />
+    <Content Include="images\icons\wmv.png" />
+    <Content Include="images\icons\xls.png" />
+    <Content Include="images\icons\zip.png" />
+    <Content Include="images\indicator.gif" />
+    <Content Include="images\interval_slider_preview_both.png" />
+    <Content Include="images\interval_slider_preview_max.png" />
+    <Content Include="images\interval_slider_preview_min.png" />
+    <Content Include="images\leftalign.jpg" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\login.gif" />
+    <Content Include="images\m1.png" />
+    <Content Include="images\m2.png" />
+    <Content Include="images\m3.png" />
+    <Content Include="images\m4.png" />
+    <Content Include="images\m5.png" />
+    <Content Include="images\main.css" />
+    <Content Include="images\minus.gif" />
+    <Content Include="images\mupload\glyphicons-halflings-white.png" />
+    <Content Include="images\mupload\loading.gif" />
+    <Content Include="images\mupload\progressbar.gif" />
+    <Content Include="images\next.gif" />
+    <Content Include="images\next_year.gif" />
+    <Content Include="images\no_image.gif" />
+    <Content Include="images\ok.gif" />
+    <Content Include="images\pdf.gif" />
+    <Content Include="images\plugin_icon.png" />
+    <Content Include="images\plus.gif" />
+    <Content Include="images\prev.gif" />
+    <Content Include="images\prev_year.gif" />
+    <Content Include="images\printer.gif" />
+    <Content Include="images\report_icon.gif" />
+    <Content Include="images\rightalign.jpg" />
+    <Content Include="images\search\close.gif" />
+    <Content Include="images\search\closeRed.gif" />
+    <Content Include="images\search\grid-split.gif" />
+    <Content Include="images\search\hideOptions.gif" />
+    <Content Include="images\search\hideWin.gif" />
+    <Content Include="images\search\search.gif" />
+    <Content Include="images\search\searchWin.gif" />
+    <Content Include="images\search\showOptions.gif" />
+    <Content Include="images\search\showWindowPin.gif" />
+    <Content Include="images\search\spliter.gif" />
+    <Content Include="images\search\windowPin.gif" />
+    <Content Include="images\shadow_down.gif" />
+    <Content Include="images\shadow_down_left.gif" />
+    <Content Include="images\shadow_down_right.gif" />
+    <Content Include="images\shadow_left.gif" />
+    <Content Include="images\shadow_right.gif" />
+    <Content Include="images\shadow_up.gif" />
+    <Content Include="images\shadow_up_left.gif" />
+    <Content Include="images\shadow_up_right.gif" />
+    <Content Include="images\Smile.png" />
+    <Content Include="images\sortnext.gif" />
+    <Content Include="images\sortprev.gif" />
+    <Content Include="images\spacer.gif" />
+    <Content Include="images\sprite_icons.png" />
+    <Content Include="images\ui\222222_256x240_icons_icons.png" />
+    <Content Include="images\ui\2e83ff_256x240_icons_icons.png" />
+    <Content Include="images\ui\454545_256x240_icons_icons.png" />
+    <Content Include="images\ui\888888_256x240_icons_icons.png" />
+    <Content Include="images\ui\aaaaaa_40x100_textures_01_flat_0.png" />
+    <Content Include="images\ui\cccccc_40x100_textures_03_highlight_soft_75.png" />
+    <Content Include="images\ui\cd0a0a_256x240_icons_icons.png" />
+    <Content Include="images\ui\dadada_40x100_textures_02_glass_75.png" />
+    <Content Include="images\ui\e6e6e6_40x100_textures_02_glass_75.png" />
+    <Content Include="images\ui\fbf9ee_40x100_textures_02_glass_55.png" />
+    <Content Include="images\ui\fef1ec_40x100_textures_05_inset_soft_95.png" />
+    <Content Include="images\ui\ffffff_40x100_textures_02_glass_65.png" />
+    <Content Include="images\ui\ffffff_40x100_textures_02_glass_75.png" />
+    <Content Include="images\up.gif" />
+    <Content Include="images\users.gif" />
+    <Content Include="images\word.gif" />
+    <Content Include="images\xml.gif" />
+    <Content Include="include\ajaxsuggest.js" />
+    <Content Include="include\bootstrap\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="include\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="include\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="include\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="include\bootstrap\css\bootstrap.css" />
+    <Content Include="include\bootstrap\css\bootstrap.css.map" />
+    <Content Include="include\bootstrap\css\bootstrap.min.css" />
+    <Content Include="include\bootstrap\css\jquery.mCustomScrollbar.css" />
+    <Content Include="include\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="include\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="include\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="include\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="include\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="include\bootstrap\js\bootstrap-datetimepicker.js" />
+    <Content Include="include\bootstrap\js\bootstrap.js" />
+    <Content Include="include\bootstrap\js\bootstrap.min.js" />
+    <Content Include="include\bootstrap\js\jquery.mCustomScrollbar.min.js" />
+    <Content Include="include\bootstrap\js\jquery.mousewheel.min.js" />
+    <Content Include="include\bootstrap\js\moment.js" />
+    <Content Include="include\bootstrap\js\npm.js" />
+    <Content Include="include\cacert.pem" />
+    <Content Include="include\colresizable.js" />
+    <Content Include="include\cookies.js" />
+    <Content Include="include\crosstable.js" />
+    <Content Include="include\jquery-ui\jquery-ui.js" />
+    <Content Include="include\jquery-ui\jquery-ui.min.js" />
+    <Content Include="include\jquery-ui\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="include\jquery-ui\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="include\jquery-ui\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="include\jquery-ui\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="include\jquery-ui\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="include\jquery-ui\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="include\jquery-ui\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="include\jquery-ui\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="include\jquery-ui\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="include\jquery-ui\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="include\jquery-ui\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="include\jquery-ui\smoothness\jquery-ui-timepicker-addon.css" />
+    <Content Include="include\jquery-ui\smoothness\jquery-ui.css" />
+    <Content Include="include\jquery-ui\smoothness\jquery-ui.min.css" />
+    <Content Include="include\jquery-ui\smoothness\jquery-ui.theme.css" />
+    <Content Include="include\jquery-ui\smoothness\jquery-ui.theme.min.css" />
+    <Content Include="include\jquery.dragtable.js" />
+    <Content Include="include\jquery.inputhintbox.js" />
+    <Content Include="include\jquery.js" />
+    <Content Include="include\json.js" />
+    <Content Include="include\lang\English.js" />
+    <Content Include="include\loadfirst.js" />
+    <Content Include="include\markerclusterer.js" />
+    <Content Include="include\pdf.js" />
+    <Content Include="include\pdfinitlink.js" />
+    <Content Include="include\pdfnewwindow.js" />
+    <Content Include="include\ResizeSensor\LICENSE" />
+    <Content Include="include\ResizeSensor\ResizeSensor.js" />
+    <Content Include="include\rte\blank.htm" />
+    <Content Include="include\rte\html2xhtml.js" />
+    <Content Include="include\rte\images\bgcolor.gif" />
+    <Content Include="include\rte\images\blackdot.gif" />
+    <Content Include="include\rte\images\bold.gif" />
+    <Content Include="include\rte\images\centre.gif" />
+    <Content Include="include\rte\images\copy.gif" />
+    <Content Include="include\rte\images\cut.gif" />
+    <Content Include="include\rte\images\decrease_font.gif" />
+    <Content Include="include\rte\images\email.gif" />
+    <Content Include="include\rte\images\hr.gif" />
+    <Content Include="include\rte\images\hyperlink.gif" />
+    <Content Include="include\rte\images\image.gif" />
+    <Content Include="include\rte\images\increase_font.gif" />
+    <Content Include="include\rte\images\indent.gif" />
+    <Content Include="include\rte\images\insert_table.gif" />
+    <Content Include="include\rte\images\italic.gif" />
+    <Content Include="include\rte\images\justifyfull.gif" />
+    <Content Include="include\rte\images\left_just.gif" />
+    <Content Include="include\rte\images\list.gif" />
+    <Content Include="include\rte\images\numbered_list.gif" />
+    <Content Include="include\rte\images\outdent.gif" />
+    <Content Include="include\rte\images\paste.gif" />
+    <Content Include="include\rte\images\redo.gif" />
+    <Content Include="include\rte\images\removeformat.gif" />
+    <Content Include="include\rte\images\right_just.gif" />
+    <Content Include="include\rte\images\smiley.gif" />
+    <Content Include="include\rte\images\special_chars.gif" />
+    <Content Include="include\rte\images\spellcheck.gif" />
+    <Content Include="include\rte\images\strikethrough.gif" />
+    <Content Include="include\rte\images\subscript.gif" />
+    <Content Include="include\rte\images\superscript.gif" />
+    <Content Include="include\rte\images\textcolor.gif" />
+    <Content Include="include\rte\images\underline.gif" />
+    <Content Include="include\rte\images\undo.gif" />
+    <Content Include="include\rte\images\unlink.gif" />
+    <Content Include="include\rte\insert_link.htm" />
+    <Content Include="include\rte\insert_special_char.htm" />
+    <Content Include="include\rte\insert_table.htm" />
+    <Content Include="include\rte\palette.htm" />
+    <Content Include="include\rte\richtext.js" />
+    <Content Include="include\rte\rte.css" />
+    <Content Include="include\runnerJS\events\pageevents_ABC_Voting_My_Voting.js" />
+    <Content Include="include\runnerJS\events\pageevents_dbo__ABCVotes.js" />
+    <Content Include="include\runnerJS\gmap.js" />
+    <Content Include="include\runnerJS\MapManager.js" />
+    <Content Include="include\runnerJS\RunnerAll.js" />
+    <Content Include="include\validate\test.js" />
+    <Content Include="include\yui\yui-min.js" />
+    <Content Include="include\yui\yui.lib" />
+    <Content Include="include\yui\yuicss.lib" />
+    <Content Include="packages.config" />
+    <Content Include="pagestyles\add2.css" />
+    <Content Include="pagestyles\add2IE.css" />
+    <Content Include="pagestyles\add2RTL.css" />
+    <Content Include="pagestyles\detailspreview.css" />
+    <Content Include="pagestyles\detailspreviewIE.css" />
+    <Content Include="pagestyles\detailspreviewRTL.css" />
+    <Content Include="pagestyles\edit2.css" />
+    <Content Include="pagestyles\edit2IE.css" />
+    <Content Include="pagestyles\edit2RTL.css" />
+    <Content Include="pagestyles\export2.css" />
+    <Content Include="pagestyles\export2IE.css" />
+    <Content Include="pagestyles\export2RTL.css" />
+    <Content Include="pagestyles\import2.css" />
+    <Content Include="pagestyles\import2IE.css" />
+    <Content Include="pagestyles\import2RTL.css" />
+    <Content Include="pagestyles\list6.css" />
+    <Content Include="pagestyles\list6IE.css" />
+    <Content Include="pagestyles\list6RTL.css" />
+    <Content Include="pagestyles\login2.css" />
+    <Content Include="pagestyles\login2IE.css" />
+    <Content Include="pagestyles\login2RTL.css" />
+    <Content Include="pagestyles\masterlist.css" />
+    <Content Include="pagestyles\masterlistIE.css" />
+    <Content Include="pagestyles\masterlistRTL.css" />
+    <Content Include="pagestyles\masterprint.css" />
+    <Content Include="pagestyles\masterprintIE.css" />
+    <Content Include="pagestyles\masterprintRTL.css" />
+    <Content Include="pagestyles\menu2.css" />
+    <Content Include="pagestyles\menu2IE.css" />
+    <Content Include="pagestyles\menu2RTL.css" />
+    <Content Include="pagestyles\print.css" />
+    <Content Include="pagestyles\printIE.css" />
+    <Content Include="pagestyles\printRTL.css" />
+    <Content Include="pagestyles\search2.css" />
+    <Content Include="pagestyles\search2IE.css" />
+    <Content Include="pagestyles\search2RTL.css" />
+    <Content Include="pagestyles\view2.css" />
+    <Content Include="pagestyles\view2IE.css" />
+    <Content Include="pagestyles\view2RTL.css" />
+    <Content Include="plugins\dummy" />
+    <Content Include="securitycode.swf" />
+    <Content Include="styles\AvenueAvenue\btn\sprite1.png" />
+    <Content Include="styles\AvenueAvenue\btnbutton1\sprite1.png" />
+    <Content Include="styles\AvenueAvenue\img1\sprite1.png" />
+    <Content Include="styles\AvenueAvenue\img2\sprite1.png" />
+    <Content Include="styles\AvenueAvenue\img2\sprite2.png" />
+    <Content Include="styles\AvenueAvenue\img2\sprite3.png" />
+    <Content Include="styles\AvenueAvenue\img2\sprite4.png" />
+    <Content Include="styles\AvenueAvenue\img2\sprite5.png" />
+    <Content Include="styles\AvenueAvenue\img3\sprite1.png" />
+    <Content Include="styles\AvenueAvenue\imgfields\sprite1.png" />
+    <Content Include="styles\AvenueAvenue\imgform\sprite1.png" />
+    <Content Include="styles\AvenueAvenue\imggrid\sprite1.png" />
+    <Content Include="styles\AvenueAvenue\imggrid\sprite2.png" />
+    <Content Include="styles\AvenueAvenue\imggrid\sprite3.png" />
+    <Content Include="styles\AvenueAvenue\imghmenu\sprite1.png" />
+    <Content Include="styles\AvenueAvenue\imghmenu\sprite2.png" />
+    <Content Include="styles\AvenueAvenue\imgmenu\sprite1.png" />
+    <Content Include="styles\AvenueAvenue\imgmenu\sprite2.png" />
+    <Content Include="styles\AvenueAvenue\style.css" />
+    <Content Include="styles\AvenueAvenue\styleIE.css" />
+    <Content Include="styles\AvenueAvenue\styleIEOld.css" />
+    <Content Include="styles\AvenueAvenue\styleOld.css" />
+    <Content Include="styles\AvenueAvenue\styleRTL.css" />
+    <Content Include="styles\AvenueAvenue\styleRTLOld.css" />
+    <Content Include="styles\AvenueAvenue\tab\sprite1.png" />
+    <Content Include="styles\bootstrap\cerulean\css\bootstrap-theme.min.css" />
+    <Content Include="styles\bootstrap\cerulean\css\tweaks.css" />
+    <Content Include="styles\bs.css" />
+    <Content Include="styles\default.css" />
+    <Content Include="styles\defaultIE.css" />
+    <Content Include="styles\defaultPDF.css" />
+    <Content Include="styles\defaultRTL.css" />
+    <Content Include="styles\general.css" />
+    <Content Include="styles\pdf.css" />
+    <Content Include="styles\PdfAvenue\btn\sprite1.png" />
+    <Content Include="styles\PdfAvenue\btnbutton1\sprite1.png" />
+    <Content Include="styles\PdfAvenue\style.css" />
+    <Content Include="styles\PdfAvenue\styleIE.css" />
+    <Content Include="styles\PdfAvenue\styleIEOld.css" />
+    <Content Include="styles\PdfAvenue\styleOld.css" />
+    <Content Include="styles\PdfAvenue\styleRTL.css" />
+    <Content Include="styles\PdfAvenue\styleRTLOld.css" />
+    <Content Include="styles\PdfAvenue\tab\sprite1.png" />
+    <Content Include="templates\bsmenu_horiz_preview.htm" />
+    <Content Include="templates\bsmenu_preview.htm" />
+    <Content Include="templates\bsmenu_welcome_preview.htm" />
+    <Content Include="templates\bsmenuitem.htm" />
+    <Content Include="templates\bsmenuitem_preview.htm" />
+    <Content Include="templates\chart_preview.htm" />
+    <Content Include="templates\crosstab_report_fields_preview.htm" />
+    <Content Include="templates\mainmenu_adminarea_horiz_preview.htm" />
+    <Content Include="templates\mainmenu_horiz_preview.htm" />
+    <Content Include="templates\mainmenu_horiz_temporary.htm" />
+    <Content Include="templates\mainmenu_inline.htm" />
+    <Content Include="templates\mainmenu_inline_temporary.htm" />
+    <Content Include="templates\mainmenu_page_temporary.htm" />
+    <Content Include="templates\mainmenu_preview_new.htm" />
+    <Content Include="templates\mainmenu_quickjump_preview.htm" />
+    <Content Include="templates\mainmenu_simple.htm" />
+    <Content Include="templates\mainmenu_simple_temporary.htm" />
+    <Content Include="templates\mainmenu_temporary.htm" />
+    <Content Include="templates\menuitem_adminarea.htm" />
+    <Content Include="templates\menuitem_adminarea_horiz.htm" />
+    <Content Include="templates\menuitem_adminarea_horiz_preview.htm" />
+    <Content Include="templates\menuitem_adminarea_preview.htm" />
+    <Content Include="templates\menuitem_horizontal.htm" />
+    <Content Include="templates\menuitem_horizontal_preview.htm" />
+    <Content Include="templates\menuitem_inline.htm" />
+    <Content Include="templates\newmainmenu_horiz_preview.htm" />
+    <Content Include="templates\newmainmenu_inline.htm" />
+    <Content Include="templates\newmainmenu_inline_preview.htm" />
+    <Content Include="templates\newmainmenu_simple.htm" />
+    <Content Include="templates\newmainmenu_simple_preview.htm" />
+    <Content Include="templates\newmenuitem.htm" />
+    <Content Include="templates\newmenuitem_adminarea.htm" />
+    <Content Include="templates\newmenuitem_horiz.htm" />
+    <Content Include="templates\newmenuitem_horiz_preview.htm" />
+    <Content Include="templates\newmenuitem_inline.htm" />
+    <Content Include="templates\newmenuitem_inline_preview.htm" />
+    <Content Include="templates\newmenuitem_preview.htm" />
+    <Content Include="Views\ABC_Voting_Batch_Create\edit.cshtml" />
+    <Content Include="Views\ABC_Voting_Batch_Create\export.cshtml" />
+    <Content Include="Views\ABC_Voting_Batch_Create\import.cshtml" />
+    <Content Include="Views\ABC_Voting_Batch_Create\inline_edit.cshtml" />
+    <Content Include="Views\ABC_Voting_Batch_Create\list.cshtml" />
+    <Content Include="Views\ABC_Voting_Batch_Create\print.cshtml" />
+    <Content Include="Views\ABC_Voting_Batch_Create\search.cshtml" />
+    <Content Include="Views\ABC_Voting_Batch_Create\view.cshtml" />
+    <Content Include="Views\ABC_Voting_My_Voting\add.cshtml" />
+    <Content Include="Views\ABC_Voting_My_Voting\edit.cshtml" />
+    <Content Include="Views\ABC_Voting_My_Voting\export.cshtml" />
+    <Content Include="Views\ABC_Voting_My_Voting\import.cshtml" />
+    <Content Include="Views\ABC_Voting_My_Voting\list.cshtml" />
+    <Content Include="Views\ABC_Voting_My_Voting\masterlist.cshtml" />
+    <Content Include="Views\ABC_Voting_My_Voting\masterprint.cshtml" />
+    <Content Include="Views\ABC_Voting_My_Voting\print.cshtml" />
+    <Content Include="Views\ABC_Voting_My_Voting\search.cshtml" />
+    <Content Include="Views\ABC_Voting_My_Voting\view.cshtml" />
+    <Content Include="Views\ABC_Voting_Recirculated1\add.cshtml" />
+    <Content Include="Views\ABC_Voting_Recirculated1\edit.cshtml" />
+    <Content Include="Views\ABC_Voting_Recirculated1\export.cshtml" />
+    <Content Include="Views\ABC_Voting_Recirculated1\import.cshtml" />
+    <Content Include="Views\ABC_Voting_Recirculated1\list.cshtml" />
+    <Content Include="Views\ABC_Voting_Recirculated1\masterlist.cshtml" />
+    <Content Include="Views\ABC_Voting_Recirculated1\masterprint.cshtml" />
+    <Content Include="Views\ABC_Voting_Recirculated1\print.cshtml" />
+    <Content Include="Views\ABC_Voting_Recirculated1\search.cshtml" />
+    <Content Include="Views\ABC_Voting_Recirculated1\view.cshtml" />
+    <Content Include="Views\ABC_Voting_Submitted1\add.cshtml" />
+    <Content Include="Views\ABC_Voting_Submitted1\edit.cshtml" />
+    <Content Include="Views\ABC_Voting_Submitted1\export.cshtml" />
+    <Content Include="Views\ABC_Voting_Submitted1\import.cshtml" />
+    <Content Include="Views\ABC_Voting_Submitted1\list.cshtml" />
+    <Content Include="Views\ABC_Voting_Submitted1\print.cshtml" />
+    <Content Include="Views\ABC_Voting_Submitted1\search.cshtml" />
+    <Content Include="Views\ABC_Voting_Submitted1\view.cshtml" />
+    <Content Include="Views\dbo__ABCReports\add.cshtml" />
+    <Content Include="Views\dbo__ABCReports\edit.cshtml" />
+    <Content Include="Views\dbo__ABCReports\export.cshtml" />
+    <Content Include="Views\dbo__ABCReports\import.cshtml" />
+    <Content Include="Views\dbo__ABCReports\list.cshtml" />
+    <Content Include="Views\dbo__ABCReports\masterlist.cshtml" />
+    <Content Include="Views\dbo__ABCReports\masterprint.cshtml" />
+    <Content Include="Views\dbo__ABCReports\print.cshtml" />
+    <Content Include="Views\dbo__ABCReports\search.cshtml" />
+    <Content Include="Views\dbo__ABCReports\view.cshtml" />
+    <Content Include="Views\dbo__ABCSecurity\add.cshtml" />
+    <Content Include="Views\dbo__ABCSecurity\edit.cshtml" />
+    <Content Include="Views\dbo__ABCSecurity\export.cshtml" />
+    <Content Include="Views\dbo__ABCSecurity\import.cshtml" />
+    <Content Include="Views\dbo__ABCSecurity\inline_add.cshtml" />
+    <Content Include="Views\dbo__ABCSecurity\inline_edit.cshtml" />
+    <Content Include="Views\dbo__ABCSecurity\list.cshtml" />
+    <Content Include="Views\dbo__ABCSecurity\print.cshtml" />
+    <Content Include="Views\dbo__ABCSecurity\search.cshtml" />
+    <Content Include="Views\dbo__ABCSecurity\view.cshtml" />
+    <Content Include="Views\dbo__ABCVotes\add.cshtml" />
+    <Content Include="Views\dbo__ABCVotes\detailspreview.cshtml" />
+    <Content Include="Views\dbo__ABCVotes\edit.cshtml" />
+    <Content Include="Views\dbo__ABCVotes\export.cshtml" />
+    <Content Include="Views\dbo__ABCVotes\import.cshtml" />
+    <Content Include="Views\dbo__ABCVotes\inline_add.cshtml" />
+    <Content Include="Views\dbo__ABCVotes\inline_edit.cshtml" />
+    <Content Include="Views\dbo__ABCVotes\list.cshtml" />
+    <Content Include="Views\dbo__ABCVotes\print.cshtml" />
+    <Content Include="Views\dbo__ABCVotes\search.cshtml" />
+    <Content Include="Views\dbo_vwABCReportsVoteCount\export.cshtml" />
+    <Content Include="Views\dbo_vwABCReportsVoteCount\inline_edit.cshtml" />
+    <Content Include="Views\dbo_vwABCReportsVoteCount\list.cshtml" />
+    <Content Include="Views\dbo_vwABCReportsVoteCount\masterlist.cshtml" />
+    <Content Include="Views\dbo_vwABCReportsVoteCount\masterprint.cshtml" />
+    <Content Include="Views\dbo_vwABCReportsVoteCount\print.cshtml" />
+    <Content Include="Views\dbo_vwABCReportsVoteCount\search.cshtml" />
+    <Content Include="Views\error.cshtml" />
+    <Content Include="Views\Global\login.cshtml" />
+    <Content Include="Views\Global\menu.cshtml" />
+    <Content Include="Views\loadindicator.cshtml" />
+    <Content Include="Views\Shared\bsmain_mainmenu_horiz.cshtml" />
+    <Content Include="Views\Shared\bsmain_mainmenu_tree.cshtml" />
+    <Content Include="Views\Shared\bswelcome_page_mainmenu.cshtml" />
+    <Content Include="Views\Shared\main_mainmenu.cshtml" />
+    <Content Include="Views\Shared\main_mainmenu_horiz.cshtml" />
+    <Content Include="Views\Shared\main_mainmenu_m.cshtml" />
+    <Content Include="Views\Shared\main_mainmenu_quickjump.cshtml" />
+    <Content Include="Views\Shared\oldmain_mainmenu.cshtml" />
+    <Content Include="Views\Shared\oldmain_mainmenu_horiz.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Web.config" />
+    <Content Include="bin\Events\CSEvents.dll" />
+    <Content Include="bin\Events\VBEvents.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="bin\Events\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!--<Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" />-->
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2040/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+</Project>

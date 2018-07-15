@@ -1,0 +1,104 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+@foreach (string _mainmenu_block in Model.GetSection("mainmenu_block", this)){
+	<UL class="rnr-b-vmenu simple @(Model.displayVar("menustyle"))">
+	@foreach (string _item1_menulink in Model.GetSection("item1_menulink", this)){
+	<LI class="@(Model.displayVar("item1_current")) menuLeaf">
+		<div>
+<div>
+<A @(Model.displayVar("item1_menulink_attrs"))>@(Model.displayVar("item1_title"))</a>
+</div>
+</div>
+
+
+
+	</li>
+	}
+	@foreach (string _item2_menulink in Model.GetSection("item2_menulink", this)){
+	<LI class="@(Model.displayVar("item2_current")) menuLeaf">
+		<div>
+<div>
+<A @(Model.displayVar("item2_menulink_attrs"))>@(Model.displayVar("item2_title"))</a>
+</div>
+</div>
+
+
+
+	</li>
+	}
+	@foreach (string _item3_menulink in Model.GetSection("item3_menulink", this)){
+	<LI class="@(Model.displayVar("item3_current")) menuLeaf">
+		<div>
+<div>
+<A @(Model.displayVar("item3_menulink_attrs"))>@(Model.displayVar("item3_title"))</a>
+</div>
+</div>
+
+
+
+	</li>
+	}
+	@foreach (string _item4_menulink in Model.GetSection("item4_menulink", this)){
+	<LI class="@(Model.displayVar("item4_current")) menuLeaf">
+		<div>
+<div>
+<A @(Model.displayVar("item4_menulink_attrs"))>@(Model.displayVar("item4_title"))</a>
+</div>
+</div>
+
+
+
+	</li>
+	}
+	@foreach (string _item5_menulink in Model.GetSection("item5_menulink", this)){
+	<LI class="@(Model.displayVar("item5_current")) menuLeaf">
+		<div>
+<div>
+<A @(Model.displayVar("item5_menulink_attrs"))>@(Model.displayVar("item5_title"))</a>
+</div>
+</div>
+
+
+
+	</li>
+	}
+	@foreach (string _item6_menulink in Model.GetSection("item6_menulink", this)){
+	<LI class="@(Model.displayVar("item6_current")) menuLeaf">
+		<div>
+<div>
+<A @(Model.displayVar("item6_menulink_attrs"))>@(Model.displayVar("item6_title"))</a>
+</div>
+</div>
+
+
+
+	</li>
+	}
+	@foreach (string _item7_menulink in Model.GetSection("item7_menulink", this)){
+	<LI class="@(Model.displayVar("item7_current")) menuLeaf">
+		<div>
+<div>
+<A @(Model.displayVar("item7_menulink_attrs"))>@(Model.displayVar("item7_title"))</a>
+</div>
+</div>
+
+
+
+	</li>
+	}
+</ul>
+}
+
+

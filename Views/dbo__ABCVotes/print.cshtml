@@ -1,0 +1,205 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<!doctype html>@(new HtmlString(MVCFunctions.GetBuferContentAndClearBufer()))
+<HTML @(Model.displayVar("html_attrs"))>
+	<head>
+		<META http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<title>@(Model.displayVar("pagetitle"))</title>
+
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<LINK REL="stylesheet" href="@(webRootPath)styles/default.css" type="text/css" />
+		@foreach (string _rtlCSS in Model.GetSection("rtlCSS", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)styles/defaultRTL.css" type="text/css" />
+		}
+		@foreach (string _styleCSSFiles in Model.GetSection("styleCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("stylepath"))" type="text/css" />
+		}
+		@foreach (string _pageCSSFiles in Model.GetSection("pageCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("pagestylepath"))" type="text/css" />
+		}
+	</head>
+	
+	<BODY class="@(Model.displayVar("stylename")) function-print" @(Model.displayVar("bodyattrs"))>
+	@foreach (string _body in Model.GetSection("body", this)){
+		{Html.RenderSharedView("header");}
+	<div class="rnr-page">
+		<DIV class="rnr-top @(Model.displayVar("blockclass_top"))">
+			
+
+@foreach (string _container_pdf in Model.GetSection("container_pdf", this)){
+<div class="rnr-c rnr-ch rnr-c-pdf">
+
+@foreach (string _printbuttons in Model.GetSection("printbuttons", this)){
+<DIV class="style1 rnr-bl rnr-b-printbuttons @(Model.displayVar("brickclass_printbuttons"))">@foreach (string _divideintopages_block in Model.GetSection("divideintopages_block", this)){
+<A href="#" class="divideintopages rnr-button button" @(Model.displayVar("divideintopages_attrs"))>Prepare for printing</a>
+}
+@foreach (string _pdflink_block in Model.GetSection("pdflink_block", this)){
+<A href="#" class="pdflink rnr-button button" @(Model.displayVar("pdflink_attrs"))>PDF View</a>
+}
+</div>
+}
+
+<div class="rnr-hfiller"></div>
+</div>
+}
+
+
+
+@foreach (string _container_master in Model.GetSection("container_master", this)){
+<div class="rnr-c rnr-ch rnr-c-master">
+
+@foreach (string _mastertable_block in Model.GetSection("mastertable_block", this)){
+<DIV class="style1 rnr-bl rnr-b-masterinfoprint @(Model.displayVar("brickclass_masterinfoprint"))">@(Model.displayVar("showmasterfile"))
+</div>
+}
+
+<div class="rnr-hfiller"></div>
+</div>
+}
+
+
+		</div>
+		<div class="rnr-middle">
+			<DIV class="rnr-left @(Model.displayVar("blockclass_left"))">
+				
+			</div>
+			<DIV class="rnr-center @(Model.displayVar("blockclass_center"))">
+				
+
+@foreach (string _container_pageheader in Model.GetSection("container_pageheader", this)){
+<div class="rnr-c rnr-cv rnr-c-pageheader">
+
+@foreach (string _printheader in Model.GetSection("printheader", this)){
+<DIV class="rnr-brickcontents style1 rnr-b-printheader @(Model.displayVar("brickclass_printheader"))">	<h1>@(Model.displayVar("pagetitlelabel dbo__ABCVotes print"))</h1>
+</div>}
+
+
+@foreach (string _page_number in Model.GetSection("page_number", this)){
+<DIV class="rnr-brickcontents style1 rnr-b-page_of_print @(Model.displayVar("brickclass_page_of_print"))"><h1>Page <span class="rp-pageno">@(Model.displayVar("pageno"))</span> of <span class="rp-pagecount">@(Model.displayVar("pagecount"))</span></h1></div>}
+
+
+</div>
+}
+
+
+
+@foreach (string _container_grid in Model.GetSection("container_grid", this)){
+
+
+foreach (string _grid_block in Model.GetSection("grid_block", this)){
+	<table class="rnr-c rnr-c-grid rnr-b-grid rnr-gridtable rp-maintable" cellpadding="0">
+	<thead>
+	@foreach (string _grid_header in Model.GetSection("grid_header", this)){
+<TR class="rnr-toprow style1 @(Model.displayVar("gridHeader_class"))">
+@foreach (string _record_header in Model.GetSection("record_header", this)){
+		foreach (string _committee_member_fieldheadercolumn in Model.GetSection("committee_member_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("committee_member_class"))" @(Model.displayVar("committee_member_style"))>
+	@foreach (string _committee_member_fieldheader in Model.GetSection("committee_member_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo__ABCVotes committee_member"))</b>
+	}
+</th>
+}
+	foreach (string _date_voted_fieldheadercolumn in Model.GetSection("date_voted_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("date_voted_class"))" @(Model.displayVar("date_voted_style"))>
+	@foreach (string _date_voted_fieldheader in Model.GetSection("date_voted_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo__ABCVotes date_voted"))</b>
+	}
+</th>
+}
+	foreach (string _vote_fieldheadercolumn in Model.GetSection("vote_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("vote_class"))" @(Model.displayVar("vote_style"))>
+	@foreach (string _vote_fieldheader in Model.GetSection("vote_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo__ABCVotes vote"))</b>
+	}
+</th>
+}
+	foreach (string _comment_fieldheadercolumn in Model.GetSection("comment_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("comment_class"))" @(Model.displayVar("comment_style"))>
+	@foreach (string _comment_fieldheader in Model.GetSection("comment_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo__ABCVotes comment"))</b>
+	}
+</th>
+}
+		
+	<th class="rnr-edge">&nbsp;</th>
+	foreach (string _endrecordheader_block in Model.GetSection("endrecordheader_block", this)){
+	<th class="rnr-cs">&nbsp;</th>
+	}
+	}
+</tr>
+}
+
+	</thead>
+	<tbody>	
+	@foreach (string _grid_row in Model.GetSection("grid_row", this)){
+	<TR class="rnr-row style1 @(Model.displayVar("rowclass"))" @(Model.displayVar("rowattrs")) @(Model.displayVar("rowstyle"))>
+		@foreach (string _grid_record in Model.GetSection("grid_record", this)){
+				foreach (string _committee_member_fieldcolumn in Model.GetSection("committee_member_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("committee_member_class"))" @(Model.displayVar("committee_member_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("committee_member_value"))
+</td>
+}
+	foreach (string _date_voted_fieldcolumn in Model.GetSection("date_voted_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("date_voted_class"))" @(Model.displayVar("date_voted_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("date_voted_value"))
+</td>
+}
+	foreach (string _vote_fieldcolumn in Model.GetSection("vote_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("vote_class"))" @(Model.displayVar("vote_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("vote_value"))
+</td>
+}
+	foreach (string _comment_fieldcolumn in Model.GetSection("comment_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("comment_class"))" @(Model.displayVar("comment_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("comment_value"))
+</td>
+}
+
+		<TD class="rnr-edge" @(Model.displayVar("recordattrs"))>&nbsp;</td>
+		foreach (string _endrecord_block in Model.GetSection("endrecord_block", this)){
+		<TD class="rnr-cs" @(Model.displayVar("endrecordblock_attrs"))>&nbsp;</td>
+		}
+										
+		}
+
+	</tr>
+	}
+
+
+	
+	</tbody>
+</table>
+
+}
+
+
+
+}
+
+
+			</div>
+			<DIV class="rnr-right @(Model.displayVar("blockclass_right"))">
+				
+			</div>
+		</div>
+		<DIV class="rnr-bottom @(Model.displayVar("blockclass_bottom"))">
+			
+		</div>
+	</div>
+		
+		{Html.RenderSharedView("footer");}
+	}
+	</body>
+</html>

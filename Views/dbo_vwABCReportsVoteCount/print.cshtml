@@ -1,0 +1,432 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<!doctype html>@(new HtmlString(MVCFunctions.GetBuferContentAndClearBufer()))
+<HTML @(Model.displayVar("html_attrs"))>
+	<head>
+		<META http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<title>@(Model.displayVar("pagetitle"))</title>
+
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<LINK REL="stylesheet" href="@(webRootPath)styles/default.css" type="text/css" />
+		@foreach (string _rtlCSS in Model.GetSection("rtlCSS", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)styles/defaultRTL.css" type="text/css" />
+		}
+		@foreach (string _styleCSSFiles in Model.GetSection("styleCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("stylepath"))" type="text/css" />
+		}
+		@foreach (string _pageCSSFiles in Model.GetSection("pageCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("pagestylepath"))" type="text/css" />
+		}
+	</head>
+	
+	<BODY class="@(Model.displayVar("stylename")) function-print" @(Model.displayVar("bodyattrs"))>
+	@foreach (string _body in Model.GetSection("body", this)){
+		{Html.RenderSharedView("header");}
+	<div class="rnr-page">
+		<DIV class="rnr-top @(Model.displayVar("blockclass_top"))">
+			
+
+@foreach (string _container_pdf in Model.GetSection("container_pdf", this)){
+<div class="rnr-c rnr-ch rnr-c-pdf">
+
+@foreach (string _printbuttons in Model.GetSection("printbuttons", this)){
+<DIV class="style1 rnr-bl rnr-b-printbuttons @(Model.displayVar("brickclass_printbuttons"))">@foreach (string _divideintopages_block in Model.GetSection("divideintopages_block", this)){
+<A href="#" class="divideintopages rnr-button button" @(Model.displayVar("divideintopages_attrs"))>Prepare for printing</a>
+}
+</div>
+}
+
+<div class="rnr-hfiller"></div>
+</div>
+}
+
+
+
+
+		</div>
+		<div class="rnr-middle">
+			<DIV class="rnr-left @(Model.displayVar("blockclass_left"))">
+				
+			</div>
+			<DIV class="rnr-center @(Model.displayVar("blockclass_center"))">
+				
+
+@foreach (string _container_pageheader in Model.GetSection("container_pageheader", this)){
+<div class="rnr-c rnr-cv rnr-c-pageheader">
+
+@foreach (string _printheader in Model.GetSection("printheader", this)){
+<DIV class="rnr-brickcontents style1 rnr-b-printheader @(Model.displayVar("brickclass_printheader"))">	<h1>@(Model.displayVar("pagetitlelabel dbo_vwABCReportsVoteCount print"))</h1>
+</div>}
+
+
+@foreach (string _page_number in Model.GetSection("page_number", this)){
+<DIV class="rnr-brickcontents style1 rnr-b-page_of_print @(Model.displayVar("brickclass_page_of_print"))"><h1>Page <span class="rp-pageno">@(Model.displayVar("pageno"))</span> of <span class="rp-pagecount">@(Model.displayVar("pagecount"))</span></h1></div>}
+
+
+</div>
+}
+
+
+
+@foreach (string _container_grid in Model.GetSection("container_grid", this)){
+
+
+foreach (string _grid_block in Model.GetSection("grid_block", this)){
+	<table class="rnr-c rnr-c-grid rnr-b-grid rnr-gridtable rp-maintable" cellpadding="0">
+	<thead>
+	@foreach (string _grid_header in Model.GetSection("grid_header", this)){
+<TR class="rnr-toprow style1 @(Model.displayVar("gridHeader_class"))">
+@foreach (string _record_header in Model.GetSection("record_header", this)){
+		foreach (string _record_fieldheadercolumn in Model.GetSection("record_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("record_class"))" @(Model.displayVar("record_style"))>
+	@foreach (string _record_fieldheader in Model.GetSection("record_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount record"))</b>
+	}
+</th>
+}
+	foreach (string _batch_number_fieldheadercolumn in Model.GetSection("batch_number_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("batch_number_class"))" @(Model.displayVar("batch_number_style"))>
+	@foreach (string _batch_number_fieldheader in Model.GetSection("batch_number_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount batch_number"))</b>
+	}
+</th>
+}
+	foreach (string _species_fieldheadercolumn in Model.GetSection("species_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("species_class"))" @(Model.displayVar("species_style"))>
+	@foreach (string _species_fieldheader in Model.GetSection("species_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount species"))</b>
+	}
+</th>
+}
+	foreach (string _date_submitted_fieldheadercolumn in Model.GetSection("date_submitted_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("date_submitted_class"))" @(Model.displayVar("date_submitted_style"))>
+	@foreach (string _date_submitted_fieldheader in Model.GetSection("date_submitted_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount date_submitted"))</b>
+	}
+</th>
+}
+	foreach (string _date_observed_fieldheadercolumn in Model.GetSection("date_observed_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("date_observed_class"))" @(Model.displayVar("date_observed_style"))>
+	@foreach (string _date_observed_fieldheader in Model.GetSection("date_observed_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount date_observed"))</b>
+	}
+</th>
+}
+	foreach (string _location_fieldheadercolumn in Model.GetSection("location_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("location_class"))" @(Model.displayVar("location_style"))>
+	@foreach (string _location_fieldheader in Model.GetSection("location_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount location"))</b>
+	}
+</th>
+}
+	foreach (string _url1_fieldheadercolumn in Model.GetSection("url1_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("url1_class"))" @(Model.displayVar("url1_style"))>
+	@foreach (string _url1_fieldheader in Model.GetSection("url1_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount url1"))</b>
+	}
+</th>
+}
+	foreach (string _url2_fieldheadercolumn in Model.GetSection("url2_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("url2_class"))" @(Model.displayVar("url2_style"))>
+	@foreach (string _url2_fieldheader in Model.GetSection("url2_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount url2"))</b>
+	}
+</th>
+}
+	foreach (string _url3_fieldheadercolumn in Model.GetSection("url3_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("url3_class"))" @(Model.displayVar("url3_style"))>
+	@foreach (string _url3_fieldheader in Model.GetSection("url3_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount url3"))</b>
+	}
+</th>
+}
+	foreach (string _url4_fieldheadercolumn in Model.GetSection("url4_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("url4_class"))" @(Model.displayVar("url4_style"))>
+	@foreach (string _url4_fieldheader in Model.GetSection("url4_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount url4"))</b>
+	}
+</th>
+}
+	foreach (string _secretary_comments_fieldheadercolumn in Model.GetSection("secretary_comments_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("secretary_comments_class"))" @(Model.displayVar("secretary_comments_style"))>
+	@foreach (string _secretary_comments_fieldheader in Model.GetSection("secretary_comments_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount secretary_comments"))</b>
+	}
+</th>
+}
+	foreach (string _date_approved_fieldheadercolumn in Model.GetSection("date_approved_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("date_approved_class"))" @(Model.displayVar("date_approved_style"))>
+	@foreach (string _date_approved_fieldheader in Model.GetSection("date_approved_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount date_approved"))</b>
+	}
+</th>
+}
+	foreach (string _accept_fieldheadercolumn in Model.GetSection("accept_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("accept_class"))" @(Model.displayVar("accept_style"))>
+	@foreach (string _accept_fieldheader in Model.GetSection("accept_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount accept"))</b>
+	}
+</th>
+}
+	foreach (string _nonaccept_fieldheadercolumn in Model.GetSection("nonaccept_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("nonaccept_class"))" @(Model.displayVar("nonaccept_style"))>
+	@foreach (string _nonaccept_fieldheader in Model.GetSection("nonaccept_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount nonaccept"))</b>
+	}
+</th>
+}
+	foreach (string _status_fieldheadercolumn in Model.GetSection("status_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("status_class"))" @(Model.displayVar("status_style"))>
+	@foreach (string _status_fieldheader in Model.GetSection("status_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount status"))</b>
+	}
+</th>
+}
+	foreach (string _originalObserver_fieldheadercolumn in Model.GetSection("originalObserver_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("originalObserver_class"))" @(Model.displayVar("originalObserver_style"))>
+	@foreach (string _originalObserver_fieldheader in Model.GetSection("originalObserver_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount originalObserver"))</b>
+	}
+</th>
+}
+	foreach (string _submittedby_fieldheadercolumn in Model.GetSection("submittedby_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("submittedby_class"))" @(Model.displayVar("submittedby_style"))>
+	@foreach (string _submittedby_fieldheader in Model.GetSection("submittedby_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount submittedby"))</b>
+	}
+</th>
+}
+	foreach (string _additionalObservers_fieldheadercolumn in Model.GetSection("additionalObservers_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("additionalObservers_class"))" @(Model.displayVar("additionalObservers_style"))>
+	@foreach (string _additionalObservers_fieldheader in Model.GetSection("additionalObservers_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount additionalObservers"))</b>
+	}
+</th>
+}
+	foreach (string _parent_batch_number_fieldheadercolumn in Model.GetSection("parent_batch_number_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("parent_batch_number_class"))" @(Model.displayVar("parent_batch_number_style"))>
+	@foreach (string _parent_batch_number_fieldheader in Model.GetSection("parent_batch_number_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount parent_batch_number"))</b>
+	}
+</th>
+}
+	foreach (string _votingCycle_fieldheadercolumn in Model.GetSection("votingCycle_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("votingCycle_class"))" @(Model.displayVar("votingCycle_style"))>
+	@foreach (string _votingCycle_fieldheader in Model.GetSection("votingCycle_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount votingCycle"))</b>
+	}
+</th>
+}
+	foreach (string _groupNumber_fieldheadercolumn in Model.GetSection("groupNumber_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("groupNumber_class"))" @(Model.displayVar("groupNumber_style"))>
+	@foreach (string _groupNumber_fieldheader in Model.GetSection("groupNumber_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount groupNumber"))</b>
+	}
+</th>
+}
+	foreach (string _votecount_fieldheadercolumn in Model.GetSection("votecount_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("votecount_class"))" @(Model.displayVar("votecount_style"))>
+	@foreach (string _votecount_fieldheader in Model.GetSection("votecount_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount votecount"))</b>
+	}
+</th>
+}
+	foreach (string _id_fieldheadercolumn in Model.GetSection("id_fieldheadercolumn", this)){
+<TH class="runner-cc @(Model.displayVar("id_class"))" @(Model.displayVar("id_style"))>
+	@foreach (string _id_fieldheader in Model.GetSection("id_fieldheader", this)){
+	<b>@(Model.displayVar("label dbo_vwABCReportsVoteCount id"))</b>
+	}
+</th>
+}
+		
+	<th class="rnr-edge">&nbsp;</th>
+	foreach (string _endrecordheader_block in Model.GetSection("endrecordheader_block", this)){
+	<th class="rnr-cs">&nbsp;</th>
+	}
+	}
+</tr>
+}
+
+	</thead>
+	<tbody>	
+	@foreach (string _grid_row in Model.GetSection("grid_row", this)){
+	<TR class="rnr-row style1 @(Model.displayVar("rowclass"))" @(Model.displayVar("rowattrs")) @(Model.displayVar("rowstyle"))>
+		@foreach (string _grid_record in Model.GetSection("grid_record", this)){
+				foreach (string _record_fieldcolumn in Model.GetSection("record_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("record_class"))" @(Model.displayVar("record_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("record_value"))
+</td>
+}
+	foreach (string _batch_number_fieldcolumn in Model.GetSection("batch_number_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("batch_number_class"))" @(Model.displayVar("batch_number_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("batch_number_value"))
+</td>
+}
+	foreach (string _species_fieldcolumn in Model.GetSection("species_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("species_class"))" @(Model.displayVar("species_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("species_value"))
+</td>
+}
+	foreach (string _date_submitted_fieldcolumn in Model.GetSection("date_submitted_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("date_submitted_class"))" @(Model.displayVar("date_submitted_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("date_submitted_value"))
+</td>
+}
+	foreach (string _date_observed_fieldcolumn in Model.GetSection("date_observed_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("date_observed_class"))" @(Model.displayVar("date_observed_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("date_observed_value"))
+</td>
+}
+	foreach (string _location_fieldcolumn in Model.GetSection("location_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("location_class"))" @(Model.displayVar("location_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("location_value"))
+</td>
+}
+	foreach (string _url1_fieldcolumn in Model.GetSection("url1_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("url1_class"))" @(Model.displayVar("url1_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("url1_value"))
+</td>
+}
+	foreach (string _url2_fieldcolumn in Model.GetSection("url2_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("url2_class"))" @(Model.displayVar("url2_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("url2_value"))
+</td>
+}
+	foreach (string _url3_fieldcolumn in Model.GetSection("url3_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("url3_class"))" @(Model.displayVar("url3_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("url3_value"))
+</td>
+}
+	foreach (string _url4_fieldcolumn in Model.GetSection("url4_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("url4_class"))" @(Model.displayVar("url4_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("url4_value"))
+</td>
+}
+	foreach (string _secretary_comments_fieldcolumn in Model.GetSection("secretary_comments_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("secretary_comments_class"))" @(Model.displayVar("secretary_comments_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("secretary_comments_value"))
+</td>
+}
+	foreach (string _date_approved_fieldcolumn in Model.GetSection("date_approved_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("date_approved_class"))" @(Model.displayVar("date_approved_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("date_approved_value"))
+</td>
+}
+	foreach (string _accept_fieldcolumn in Model.GetSection("accept_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("accept_class"))" @(Model.displayVar("accept_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("accept_value"))
+</td>
+}
+	foreach (string _nonaccept_fieldcolumn in Model.GetSection("nonaccept_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("nonaccept_class"))" @(Model.displayVar("nonaccept_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("nonaccept_value"))
+</td>
+}
+	foreach (string _status_fieldcolumn in Model.GetSection("status_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("status_class"))" @(Model.displayVar("status_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("status_value"))
+</td>
+}
+	foreach (string _originalObserver_fieldcolumn in Model.GetSection("originalObserver_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("originalObserver_class"))" @(Model.displayVar("originalObserver_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("originalObserver_value"))
+</td>
+}
+	foreach (string _submittedby_fieldcolumn in Model.GetSection("submittedby_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("submittedby_class"))" @(Model.displayVar("submittedby_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("submittedby_value"))
+</td>
+}
+	foreach (string _additionalObservers_fieldcolumn in Model.GetSection("additionalObservers_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("additionalObservers_class"))" @(Model.displayVar("additionalObservers_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("additionalObservers_value"))
+</td>
+}
+	foreach (string _parent_batch_number_fieldcolumn in Model.GetSection("parent_batch_number_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("parent_batch_number_class"))" @(Model.displayVar("parent_batch_number_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("parent_batch_number_value"))
+</td>
+}
+	foreach (string _votingCycle_fieldcolumn in Model.GetSection("votingCycle_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("votingCycle_class"))" @(Model.displayVar("votingCycle_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("votingCycle_value"))
+</td>
+}
+	foreach (string _groupNumber_fieldcolumn in Model.GetSection("groupNumber_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("groupNumber_class"))" @(Model.displayVar("groupNumber_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("groupNumber_value"))
+</td>
+}
+	foreach (string _votecount_fieldcolumn in Model.GetSection("votecount_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("votecount_class"))" @(Model.displayVar("votecount_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("votecount_value"))
+</td>
+}
+	foreach (string _id_fieldcolumn in Model.GetSection("id_fieldcolumn", this)){
+<TD class="runner-cc @(Model.displayVar("id_class"))" @(Model.displayVar("id_style")) @(Model.displayVar("recordattrs"))>
+	@(Model.displayVar("id_value"))
+</td>
+}
+
+		<TD class="rnr-edge" @(Model.displayVar("recordattrs"))>&nbsp;</td>
+		foreach (string _endrecord_block in Model.GetSection("endrecord_block", this)){
+		<TD class="rnr-cs" @(Model.displayVar("endrecordblock_attrs"))>&nbsp;</td>
+		}
+										
+		}
+
+	</tr>
+		foreach (string _details_row in Model.GetSection("details_row", this)){
+	<TR class="rnr-row style1 @(Model.displayVar("rowclass"))" @(Model.displayVar("rowattrs")) @(Model.displayVar("rowstyle"))>
+		@foreach (string _details_record in Model.GetSection("details_record", this)){
+		<td  class="rnr-edge" colspan="24">
+			@foreach (string _details_table in Model.GetSection("details_table", this)){
+			@(Model.displayVar("details"))
+			}
+		</td>
+		foreach (string _endrecord_block_1 in Model.GetSection("endrecord_block", this)){
+		<TD class="rnr-cs" @(Model.displayVar("endrecordblock_attrs"))>&nbsp;</td>
+		}
+		}
+	</tr>
+	}
+}
+
+
+	
+	</tbody>
+</table>
+
+}
+
+
+
+}
+
+
+			</div>
+			<DIV class="rnr-right @(Model.displayVar("blockclass_right"))">
+				
+			</div>
+		</div>
+		<DIV class="rnr-bottom @(Model.displayVar("blockclass_bottom"))">
+			
+		</div>
+	</div>
+		
+		{Html.RenderSharedView("footer");}
+	}
+	</body>
+</html>

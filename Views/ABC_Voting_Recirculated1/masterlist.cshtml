@@ -1,0 +1,82 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<DIV @(Model.displayVar("pageattrs"))>
+
+@foreach (string _container_masterlistheader in Model.GetSection("container_masterlistheader", this)){
+<div class="rnr-c rnr-ch rnr-c-masterlistheader">
+
+
+<DIV class="style1 rnr-bl rnr-b-masterlistheader @(Model.displayVar("brickclass_masterlistheader"))">	<h1>@(Model.displayVar("pagetitlelabel ABC_Voting_Recirculated masterlist"))</h1>
+</div>
+
+
+<div class="rnr-hfiller"></div>
+</div>
+}
+
+
+
+@foreach (string _container_mastergrid in Model.GetSection("container_mastergrid", this)){
+
+
+
+<table class="rnr-c rnr-cont rnr-c-mastergrid rnr-b-mastergridfields rnr-gridtable" cellpadding="0" ><THEAD>
+		</thead>
+		<TR class="rnr-toprow style1 @(Model.displayVar("gridHeader_class"))">
+			<TH class="@(Model.displayVar("votingCycle_class"))">@(Model.displayVar("label ABC_Voting_Recirculated votingCycle"))</th>
+			<TH class="@(Model.displayVar("groupNumber_class"))">@(Model.displayVar("label ABC_Voting_Recirculated groupNumber"))</th>
+			<TH class="@(Model.displayVar("batch_number_class"))">@(Model.displayVar("label ABC_Voting_Recirculated batch_number"))</th>
+			<TH class="@(Model.displayVar("species_class"))">@(Model.displayVar("label ABC_Voting_Recirculated species"))</th>
+			<TH class="@(Model.displayVar("date_submitted_class"))">@(Model.displayVar("label ABC_Voting_Recirculated date_submitted"))</th>
+			<TH class="@(Model.displayVar("date_observed_class"))">@(Model.displayVar("label ABC_Voting_Recirculated date_observed"))</th>
+			<TH class="@(Model.displayVar("location_class"))">@(Model.displayVar("label ABC_Voting_Recirculated location"))</th>
+			<TH class="@(Model.displayVar("url1_class"))">@(Model.displayVar("label ABC_Voting_Recirculated url1"))</th>
+			<TH class="@(Model.displayVar("url2_class"))">@(Model.displayVar("label ABC_Voting_Recirculated url2"))</th>
+			<TH class="@(Model.displayVar("url3_class"))">@(Model.displayVar("label ABC_Voting_Recirculated url3"))</th>
+			<TH class="@(Model.displayVar("url4_class"))">@(Model.displayVar("label ABC_Voting_Recirculated url4"))</th>
+			<TH class="@(Model.displayVar("secretary_comments_class"))">@(Model.displayVar("label ABC_Voting_Recirculated secretary_comments"))</th>
+			<TH class="@(Model.displayVar("status_class"))">@(Model.displayVar("label ABC_Voting_Recirculated status"))</th>
+			<TH class="@(Model.displayVar("originalObserver_class"))">@(Model.displayVar("label ABC_Voting_Recirculated originalObserver"))</th>
+			<th class="rnr-edge">&nbsp;</th>
+		</tr>
+	
+	<tbody>
+		<tr class="rnr-row style1">
+			<TD class="@(Model.displayVar("votingCycle_class"))">@(Model.displayVar("votingCycle_mastervalue"))</td>
+			<TD class="@(Model.displayVar("groupNumber_class"))">@(Model.displayVar("groupNumber_mastervalue"))</td>
+			<TD class="@(Model.displayVar("batch_number_class"))">@(Model.displayVar("batch_number_mastervalue"))</td>
+			<TD class="@(Model.displayVar("species_class"))">@(Model.displayVar("species_mastervalue"))</td>
+			<TD class="@(Model.displayVar("date_submitted_class"))">@(Model.displayVar("date_submitted_mastervalue"))</td>
+			<TD class="@(Model.displayVar("date_observed_class"))">@(Model.displayVar("date_observed_mastervalue"))</td>
+			<TD class="@(Model.displayVar("location_class"))">@(Model.displayVar("location_mastervalue"))</td>
+			<TD class="@(Model.displayVar("url1_class"))">@(Model.displayVar("url1_mastervalue"))</td>
+			<TD class="@(Model.displayVar("url2_class"))">@(Model.displayVar("url2_mastervalue"))</td>
+			<TD class="@(Model.displayVar("url3_class"))">@(Model.displayVar("url3_mastervalue"))</td>
+			<TD class="@(Model.displayVar("url4_class"))">@(Model.displayVar("url4_mastervalue"))</td>
+			<TD class="@(Model.displayVar("secretary_comments_class"))">@(Model.displayVar("secretary_comments_mastervalue"))</td>
+			<TD class="@(Model.displayVar("status_class"))">@(Model.displayVar("status_mastervalue"))</td>
+			<TD class="@(Model.displayVar("originalObserver_class"))">@(Model.displayVar("originalObserver_mastervalue"))</td>
+			<td class="rnr-edge">&nbsp;</td>
+		</tr>
+	</tbody>
+
+</table> 
+
+
+
+
+}
+
+</div>

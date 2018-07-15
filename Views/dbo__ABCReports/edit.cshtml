@@ -1,0 +1,508 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<!doctype html>@(new HtmlString(MVCFunctions.GetBuferContentAndClearBufer()))
+<HTML @(Model.displayVar("html_attrs"))>
+	<head>
+		<META http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<title>@(Model.displayVar("pagetitle"))</title>
+
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<LINK REL="stylesheet" href="@(webRootPath)styles/default.css" type="text/css" />
+		@foreach (string _rtlCSS in Model.GetSection("rtlCSS", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)styles/defaultRTL.css" type="text/css" />
+		}
+		@foreach (string _styleCSSFiles in Model.GetSection("styleCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("stylepath"))" type="text/css" />
+		}
+		@foreach (string _pageCSSFiles in Model.GetSection("pageCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("pagestylepath"))" type="text/css" />
+		}
+	</head>
+	
+	<BODY class="@(Model.displayVar("stylename")) function-edit" @(Model.displayVar("bodyattrs"))>
+	@foreach (string _body in Model.GetSection("body", this)){
+		{Html.RenderSharedView("header");}
+	<div class="rnr-page">
+		<DIV class="rnr-top @(Model.displayVar("blockclass_top"))">
+			
+
+@foreach (string _container_all in Model.GetSection("container_all", this)){
+<div class="rnr-c rnr-cv rnr-c-all">
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-wrapper @(Model.displayVar("wrapperclass_edit")) rnr-wrapper rnr-cbw-edit">
+
+@foreach (string _container_edit in Model.GetSection("container_edit", this)){
+<div class="rnr-c rnr-cv rnr-c-edit">
+
+@foreach (string _editheader in Model.GetSection("editheader", this)){
+<DIV class="rnr-brickcontents style2 rnr-b-editheader @(Model.displayVar("brickclass_editheader"))"><span>	<h1>@(Model.displayVar("pagetitlelabel dbo__ABCReports edit"))</h1>
+</span></div>}
+
+
+@foreach (string _message_block in Model.GetSection("message_block", this)){
+<DIV class="rnr-brickcontents style1 rnr-b-message @(Model.displayVar("brickclass_message"))"><div class="rnr-message">@(Model.displayVar("message"))</div></div>}
+
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-wrapper @(Model.displayVar("wrapperclass_fields")) rnr-wrapper rnr-cbw-fields">
+
+@foreach (string _container_fields in Model.GetSection("container_fields", this)){
+<div class="rnr-c rnr-cv rnr-c-fields">
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-editfields @(Model.displayVar("brickclass_editfields"))"><table class="fieldGrid">
+	@foreach (string _groupNumber_fieldblock in Model.GetSection("groupNumber_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_groupNumber"))" data-fieldname="groupNumber">
+	<td class="rnr-label">
+		@foreach (string _groupNumber_label in Model.GetSection("groupNumber_label", this)){@(Model.displayVar("label dbo__ABCReports groupNumber"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("groupNumber_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _votingCycle_fieldblock in Model.GetSection("votingCycle_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_votingCycle"))" data-fieldname="votingCycle">
+	<td class="rnr-label">
+		@foreach (string _votingCycle_label in Model.GetSection("votingCycle_label", this)){@(Model.displayVar("label dbo__ABCReports votingCycle"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("votingCycle_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _species_fieldblock in Model.GetSection("species_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_species"))" data-fieldname="species">
+	<td class="rnr-label">
+		@foreach (string _species_label in Model.GetSection("species_label", this)){@(Model.displayVar("label dbo__ABCReports species"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("species_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _batch_number_fieldblock in Model.GetSection("batch_number_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_batch_number"))" data-fieldname="batch_number">
+	<td class="rnr-label">
+		@foreach (string _batch_number_label in Model.GetSection("batch_number_label", this)){@(Model.displayVar("label dbo__ABCReports batch_number"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("batch_number_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _parent_batch_number_fieldblock in Model.GetSection("parent_batch_number_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_parent_batch_number"))" data-fieldname="parent_batch_number">
+	<td class="rnr-label">
+		@foreach (string _parent_batch_number_label in Model.GetSection("parent_batch_number_label", this)){@(Model.displayVar("label dbo__ABCReports parent_batch_number"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("parent_batch_number_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _date_submitted_fieldblock in Model.GetSection("date_submitted_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_date_submitted"))" data-fieldname="date_submitted">
+	<td class="rnr-label">
+		@foreach (string _date_submitted_label in Model.GetSection("date_submitted_label", this)){@(Model.displayVar("label dbo__ABCReports date_submitted"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("date_submitted_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _date_observed_fieldblock in Model.GetSection("date_observed_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_date_observed"))" data-fieldname="date_observed">
+	<td class="rnr-label">
+		@foreach (string _date_observed_label in Model.GetSection("date_observed_label", this)){@(Model.displayVar("label dbo__ABCReports date_observed"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("date_observed_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _location_fieldblock in Model.GetSection("location_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_location"))" data-fieldname="location">
+	<td class="rnr-label">
+		@foreach (string _location_label in Model.GetSection("location_label", this)){@(Model.displayVar("label dbo__ABCReports location"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("location_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _url1_fieldblock in Model.GetSection("url1_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_url1"))" data-fieldname="url1">
+	<td class="rnr-label">
+		@foreach (string _url1_label in Model.GetSection("url1_label", this)){@(Model.displayVar("label dbo__ABCReports url1"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("url1_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _url2_fieldblock in Model.GetSection("url2_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_url2"))" data-fieldname="url2">
+	<td class="rnr-label">
+		@foreach (string _url2_label in Model.GetSection("url2_label", this)){@(Model.displayVar("label dbo__ABCReports url2"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("url2_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _url3_fieldblock in Model.GetSection("url3_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_url3"))" data-fieldname="url3">
+	<td class="rnr-label">
+		@foreach (string _url3_label in Model.GetSection("url3_label", this)){@(Model.displayVar("label dbo__ABCReports url3"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("url3_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _url4_fieldblock in Model.GetSection("url4_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_url4"))" data-fieldname="url4">
+	<td class="rnr-label">
+		@foreach (string _url4_label in Model.GetSection("url4_label", this)){@(Model.displayVar("label dbo__ABCReports url4"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("url4_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _secretary_comments_fieldblock in Model.GetSection("secretary_comments_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_secretary_comments"))" data-fieldname="secretary_comments">
+	<td class="rnr-label">
+		@foreach (string _secretary_comments_label in Model.GetSection("secretary_comments_label", this)){@(Model.displayVar("label dbo__ABCReports secretary_comments"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("secretary_comments_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _secretary_private_comments_fieldblock in Model.GetSection("secretary_private_comments_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_secretary_private_comments"))" data-fieldname="secretary_private_comments">
+	<td class="rnr-label">
+		@foreach (string _secretary_private_comments_label in Model.GetSection("secretary_private_comments_label", this)){@(Model.displayVar("label dbo__ABCReports secretary_private_comments"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("secretary_private_comments_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _date_approved_fieldblock in Model.GetSection("date_approved_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_date_approved"))" data-fieldname="date_approved">
+	<td class="rnr-label">
+		@foreach (string _date_approved_label in Model.GetSection("date_approved_label", this)){@(Model.displayVar("label dbo__ABCReports date_approved"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("date_approved_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _accept_fieldblock in Model.GetSection("accept_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_accept"))" data-fieldname="accept">
+	<td class="rnr-label">
+		@foreach (string _accept_label in Model.GetSection("accept_label", this)){@(Model.displayVar("label dbo__ABCReports accept"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("accept_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _nonaccept_fieldblock in Model.GetSection("nonaccept_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_nonaccept"))" data-fieldname="nonaccept">
+	<td class="rnr-label">
+		@foreach (string _nonaccept_label in Model.GetSection("nonaccept_label", this)){@(Model.displayVar("label dbo__ABCReports nonaccept"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("nonaccept_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _status_fieldblock in Model.GetSection("status_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_status"))" data-fieldname="status">
+	<td class="rnr-label">
+		@foreach (string _status_label in Model.GetSection("status_label", this)){@(Model.displayVar("label dbo__ABCReports status"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("status_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _originalObserver_fieldblock in Model.GetSection("originalObserver_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_originalObserver"))" data-fieldname="originalObserver">
+	<td class="rnr-label">
+		@foreach (string _originalObserver_label in Model.GetSection("originalObserver_label", this)){@(Model.displayVar("label dbo__ABCReports originalObserver"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("originalObserver_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _submittedby_fieldblock in Model.GetSection("submittedby_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_submittedby"))" data-fieldname="submittedby">
+	<td class="rnr-label">
+		@foreach (string _submittedby_label in Model.GetSection("submittedby_label", this)){@(Model.displayVar("label dbo__ABCReports submittedby"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("submittedby_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _additionalObservers_fieldblock in Model.GetSection("additionalObservers_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_additionalObservers"))" data-fieldname="additionalObservers">
+	<td class="rnr-label">
+		@foreach (string _additionalObservers_label in Model.GetSection("additionalObservers_label", this)){@(Model.displayVar("label dbo__ABCReports additionalObservers"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("additionalObservers_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _numberObserved_fieldblock in Model.GetSection("numberObserved_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_numberObserved"))" data-fieldname="numberObserved">
+	<td class="rnr-label">
+		@foreach (string _numberObserved_label in Model.GetSection("numberObserved_label", this)){@(Model.displayVar("label dbo__ABCReports numberObserved"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("numberObserved_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _countyCode_fieldblock in Model.GetSection("countyCode_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_countyCode"))" data-fieldname="countyCode">
+	<td class="rnr-label">
+		@foreach (string _countyCode_label in Model.GetSection("countyCode_label", this)){@(Model.displayVar("label dbo__ABCReports countyCode"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("countyCode_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _beginDate_fieldblock in Model.GetSection("beginDate_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_beginDate"))" data-fieldname="beginDate">
+	<td class="rnr-label">
+		@foreach (string _beginDate_label in Model.GetSection("beginDate_label", this)){@(Model.displayVar("label dbo__ABCReports beginDate"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("beginDate_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _endDate_fieldblock in Model.GetSection("endDate_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_endDate"))" data-fieldname="endDate">
+	<td class="rnr-label">
+		@foreach (string _endDate_label in Model.GetSection("endDate_label", this)){@(Model.displayVar("label dbo__ABCReports endDate"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("endDate_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _age_fieldblock in Model.GetSection("age_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_age"))" data-fieldname="age">
+	<td class="rnr-label">
+		@foreach (string _age_label in Model.GetSection("age_label", this)){@(Model.displayVar("label dbo__ABCReports age"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("age_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _sex_fieldblock in Model.GetSection("sex_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_sex"))" data-fieldname="sex">
+	<td class="rnr-label">
+		@foreach (string _sex_label in Model.GetSection("sex_label", this)){@(Model.displayVar("label dbo__ABCReports sex"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("sex_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _plumage_fieldblock in Model.GetSection("plumage_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_plumage"))" data-fieldname="plumage">
+	<td class="rnr-label">
+		@foreach (string _plumage_label in Model.GetSection("plumage_label", this)){@(Model.displayVar("label dbo__ABCReports plumage"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("plumage_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _subspecies_fieldblock in Model.GetSection("subspecies_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_subspecies"))" data-fieldname="subspecies">
+	<td class="rnr-label">
+		@foreach (string _subspecies_label in Model.GetSection("subspecies_label", this)){@(Model.displayVar("label dbo__ABCReports subspecies"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("subspecies_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _photo_fieldblock in Model.GetSection("photo_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_photo"))" data-fieldname="photo">
+	<td class="rnr-label">
+		@foreach (string _photo_label in Model.GetSection("photo_label", this)){@(Model.displayVar("label dbo__ABCReports photo"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("photo_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _video_fieldblock in Model.GetSection("video_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_video"))" data-fieldname="video">
+	<td class="rnr-label">
+		@foreach (string _video_label in Model.GetSection("video_label", this)){@(Model.displayVar("label dbo__ABCReports video"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("video_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _audio_fieldblock in Model.GetSection("audio_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_audio"))" data-fieldname="audio">
+	<td class="rnr-label">
+		@foreach (string _audio_label in Model.GetSection("audio_label", this)){@(Model.displayVar("label dbo__ABCReports audio"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("audio_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _comments_fieldblock in Model.GetSection("comments_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_comments"))" data-fieldname="comments">
+	<td class="rnr-label">
+		@foreach (string _comments_label in Model.GetSection("comments_label", this)){@(Model.displayVar("label dbo__ABCReports comments"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("comments_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _NABReference_fieldblock in Model.GetSection("NABReference_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_NABReference"))" data-fieldname="NABReference">
+	<td class="rnr-label">
+		@foreach (string _NABReference_label in Model.GetSection("NABReference_label", this)){@(Model.displayVar("label dbo__ABCReports NABReference"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("NABReference_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _hide_fieldblock in Model.GetSection("hide_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_hide"))" data-fieldname="hide">
+	<td class="rnr-label">
+		@foreach (string _hide_label in Model.GetSection("hide_label", this)){@(Model.displayVar("label dbo__ABCReports hide"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("hide_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _published_fieldblock in Model.GetSection("published_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_published"))" data-fieldname="published">
+	<td class="rnr-label">
+		@foreach (string _published_label in Model.GetSection("published_label", this)){@(Model.displayVar("label dbo__ABCReports published"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("published_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+	@foreach (string _publication_fieldblock in Model.GetSection("publication_fieldblock", this)){
+<TR class="@(Model.displayVar("fielddispclass_publication"))" data-fieldname="publication">
+	<td class="rnr-label">
+		@foreach (string _publication_label in Model.GetSection("publication_label", this)){@(Model.displayVar("label dbo__ABCReports publication"))}
+	</td>
+	<td class="rnr-control style3">
+		@(Model.displayVar("publication_editcontrol"))&nbsp;
+	</td>
+</tr>
+}
+</table></div>
+
+
+@foreach (string _editbuttons in Model.GetSection("editbuttons", this)){
+<DIV class="rnr-brickcontents style2 rnr-b-editbuttons @(Model.displayVar("brickclass_editbuttons"))"><div class="rnr-buttons-right">
+	@foreach (string _prev_button in Model.GetSection("prev_button", this)){
+	<A href="#" class="rnr-button @(Model.displayVar("prevbutton_class"))" @(Model.displayVar("prevbutton_attrs"))>&lt;&lt;&lt;</a>
+	}
+	@foreach (string _next_button in Model.GetSection("next_button", this)){
+	<A href="#" class="rnr-button  @(Model.displayVar("nextbutton_class"))" @(Model.displayVar("nextbutton_attrs"))>&gt;&gt;&gt;</a>
+	}
+</div>
+<div class="rnr-buttons-left">
+		@foreach (string _save_button in Model.GetSection("save_button", this)){
+	<A href="#" class="rnr-button main" @(Model.displayVar("savebutton_attrs"))>Save</a>
+	}
+	@foreach (string _reset_button in Model.GetSection("reset_button", this)){
+	<A href="#" class="rnr-button" @(Model.displayVar("resetbutton_attrs"))>Reset</a>
+	}
+	@foreach (string _back_button in Model.GetSection("back_button", this)){
+		<A href="#" class="rnr-button" @(Model.displayVar("backbutton_attrs"))>Back to list</a>
+	}
+	@foreach (string _close_button in Model.GetSection("close_button", this)){
+	<A href="#" class="rnr-button" @(Model.displayVar("closebutton_attrs"))>Close window</a>
+	}
+		@foreach (string _view_page_button in Model.GetSection("view_page_button", this)){
+	<A href="#" class="rnr-button" @(Model.displayVar("view_page_button_attrs"))>View</a>
+	}
+</div>
+</div>}
+
+
+</div>
+}
+
+</div>
+
+
+</div>
+}
+
+</div>
+
+
+
+</div>
+}
+
+
+		</div>
+		<div class="rnr-middle">
+			<DIV class="rnr-left @(Model.displayVar("blockclass_left"))">
+				
+			</div>
+			<DIV class="rnr-center @(Model.displayVar("blockclass_center"))">
+				
+			</div>
+			<DIV class="rnr-right @(Model.displayVar("blockclass_right"))">
+				
+			</div>
+		</div>
+		<DIV class="rnr-bottom @(Model.displayVar("blockclass_bottom"))">
+			
+		</div>
+	</div>
+		
+		{Html.RenderSharedView("footer");}
+	}
+	</body>
+</html>

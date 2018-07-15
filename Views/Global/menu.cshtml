@@ -1,0 +1,90 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<!doctype html>@(new HtmlString(MVCFunctions.GetBuferContentAndClearBufer()))
+<HTML @(Model.displayVar("html_attrs"))>
+	<head>
+		<META http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<title>@(Model.displayVar("pagetitle"))</title>
+
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<LINK REL="stylesheet" href="@(webRootPath)styles/default.css" type="text/css" />
+		@foreach (string _rtlCSS in Model.GetSection("rtlCSS", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)styles/defaultRTL.css" type="text/css" />
+		}
+		@foreach (string _styleCSSFiles in Model.GetSection("styleCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("stylepath"))" type="text/css" />
+		}
+		@foreach (string _pageCSSFiles in Model.GetSection("pageCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("pagestylepath"))" type="text/css" />
+		}
+	</head>
+	
+	<BODY class="@(Model.displayVar("stylename")) function-menu" @(Model.displayVar("bodyattrs"))>
+	@foreach (string _body in Model.GetSection("body", this)){
+		{Html.RenderSharedView("header");}
+	<div class="rnr-page">
+		<DIV class="rnr-top @(Model.displayVar("blockclass_top"))">
+			
+
+@foreach (string _container_menu in Model.GetSection("container_menu", this)){
+<div class="rnr-c rnr-cv rnr-c-menu">
+
+@foreach (string _loggedas_block in Model.GetSection("loggedas_block", this)){
+<DIV class="rnr-brickcontents style2 rnr-b-login_menu @(Model.displayVar("brickclass_login_menu"))"><DIV id="login_block@(Model.displayVar("id"))">
+	@foreach (string _loggedas_message in Model.GetSection("loggedas_message", this)){
+	<span>Logged on as&nbsp;<b>@(Model.displayVar("username"))</b><BR /><BR />
+	</span>
+	}
+	@foreach (string _guestloginbutton in Model.GetSection("guestloginbutton", this)){
+	<A href="#" class="rnr-button" @(Model.displayVar("guestloginlink_attrs"))>Login</a>
+	}
+	@foreach (string _logoutbutton in Model.GetSection("logoutbutton", this)){
+	<A class="rnr-button" href="@(webRootPath)login?a=logout" @(Model.displayVar("logoutlink_attrs"))>Log out</a>
+	}
+<!-- Permissions -->
+</div>
+</div>}
+
+
+@foreach (string _menu_block in Model.GetSection("menu_block", this)){
+@(Model.displayVar("menu main"))
+}
+
+
+</div>
+}
+
+
+		</div>
+		<div class="rnr-middle">
+			<DIV class="rnr-left @(Model.displayVar("blockclass_left"))">
+				
+			</div>
+			<DIV class="rnr-center @(Model.displayVar("blockclass_center"))">
+				
+			</div>
+			<DIV class="rnr-right @(Model.displayVar("blockclass_right"))">
+				
+			</div>
+		</div>
+		<DIV class="rnr-bottom @(Model.displayVar("blockclass_bottom"))">
+			
+		</div>
+	</div>
+		
+		{Html.RenderSharedView("footer");}
+	}
+	</body>
+</html>

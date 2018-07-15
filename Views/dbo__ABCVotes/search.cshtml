@@ -1,0 +1,193 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<!doctype html>@(new HtmlString(MVCFunctions.GetBuferContentAndClearBufer()))
+<HTML @(Model.displayVar("html_attrs"))>
+	<head>
+		<META http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<title>@(Model.displayVar("pagetitle"))</title>
+
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<LINK REL="stylesheet" href="@(webRootPath)styles/default.css" type="text/css" />
+		@foreach (string _rtlCSS in Model.GetSection("rtlCSS", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)styles/defaultRTL.css" type="text/css" />
+		}
+		@foreach (string _styleCSSFiles in Model.GetSection("styleCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("stylepath"))" type="text/css" />
+		}
+		@foreach (string _pageCSSFiles in Model.GetSection("pageCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("pagestylepath"))" type="text/css" />
+		}
+	</head>
+	
+	<BODY class="@(Model.displayVar("stylename")) function-search" @(Model.displayVar("bodyattrs"))>
+	@foreach (string _body in Model.GetSection("body", this)){
+		{Html.RenderSharedView("header");}
+	<div class="rnr-page">
+		<DIV class="rnr-top @(Model.displayVar("blockclass_top"))">
+			
+
+@foreach (string _container_search in Model.GetSection("container_search", this)){
+<div class="rnr-c rnr-cv rnr-c-search">
+
+@foreach (string _searchheader in Model.GetSection("searchheader", this)){
+<DIV class="rnr-brickcontents style2 rnr-b-srchheader @(Model.displayVar("brickclass_srchheader"))"><span>	<h1>@(Model.displayVar("pagetitlelabel dbo__ABCVotes search"))</h1>
+</span></div>}
+
+
+@foreach (string _conditions_block in Model.GetSection("conditions_block", this)){
+<DIV class="rnr-brickcontents style1 rnr-b-srchconditions @(Model.displayVar("brickclass_srchconditions"))">	<center>
+	<span class=fieldname>Criteria:&nbsp;</span>	
+	<INPUT type="radio" class="rnr-radio-button" name="srchType@(Model.displayVar("id"))" @(Model.displayVar("all_checkbox")) /><label for="all_checkbox"> All conditions</label>
+	&nbsp;&nbsp;&nbsp;
+	<INPUT type="radio" class="rnr-radio-button" name="srchType@(Model.displayVar("id"))" @(Model.displayVar("any_checkbox")) /><label for="any_checkbox"> Any condition</label>
+	</center></div>}
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-wrapper @(Model.displayVar("wrapperclass_fields")) rnr-wrapper rnr-cbw-fields">
+
+@foreach (string _container_fields in Model.GetSection("container_fields", this)){
+<div class="rnr-c rnr-cv rnr-c-fields">
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-srchfields @(Model.displayVar("brickclass_srchfields"))"><table class="fieldGrid">
+	<tr>
+		<td>&nbsp;</td>
+		<td>NOT</td>
+		<td colspan=3>&nbsp; </td>
+	</tr>
+	<TR class="@(Model.displayVar("fielddispclass_committee_member"))">
+	@foreach (string _committee_member_fieldblock in Model.GetSection("committee_member_fieldblock", this)){		
+	<td>
+		@(Model.displayVar("label dbo__ABCVotes committee_member"))
+	</td>
+	<td>
+		<INPUT type="checkbox" @(Model.displayVar("committee_member_notbox")) />
+	</td>
+	<td>
+		@(Model.displayVar("searchtype_committee_member"))
+	</td>
+	<td>
+		@(Model.displayVar("committee_member_editcontrol"))&nbsp;
+	</td>
+	<td>
+		@(Model.displayVar("committee_member_editcontrol1"))&nbsp;
+	</td>
+}
+	</tr>
+	<TR class="@(Model.displayVar("fielddispclass_date_voted"))">
+	@foreach (string _date_voted_fieldblock in Model.GetSection("date_voted_fieldblock", this)){		
+	<td>
+		@(Model.displayVar("label dbo__ABCVotes date_voted"))
+	</td>
+	<td>
+		<INPUT type="checkbox" @(Model.displayVar("date_voted_notbox")) />
+	</td>
+	<td>
+		@(Model.displayVar("searchtype_date_voted"))
+	</td>
+	<td>
+		@(Model.displayVar("date_voted_editcontrol"))&nbsp;
+	</td>
+	<td>
+		@(Model.displayVar("date_voted_editcontrol1"))&nbsp;
+	</td>
+}
+	</tr>
+	<TR class="@(Model.displayVar("fielddispclass_vote"))">
+	@foreach (string _vote_fieldblock in Model.GetSection("vote_fieldblock", this)){		
+	<td>
+		@(Model.displayVar("label dbo__ABCVotes vote"))
+	</td>
+	<td>
+		<INPUT type="checkbox" @(Model.displayVar("vote_notbox")) />
+	</td>
+	<td>
+		@(Model.displayVar("searchtype_vote"))
+	</td>
+	<td>
+		@(Model.displayVar("vote_editcontrol"))&nbsp;
+	</td>
+	<td>
+		@(Model.displayVar("vote_editcontrol1"))&nbsp;
+	</td>
+}
+	</tr>
+	<TR class="@(Model.displayVar("fielddispclass_comment"))">
+	@foreach (string _comment_fieldblock in Model.GetSection("comment_fieldblock", this)){		
+	<td>
+		@(Model.displayVar("label dbo__ABCVotes comment"))
+	</td>
+	<td>
+		<INPUT type="checkbox" @(Model.displayVar("comment_notbox")) />
+	</td>
+	<td>
+		@(Model.displayVar("searchtype_comment"))
+	</td>
+	<td>
+		@(Model.displayVar("comment_editcontrol"))&nbsp;
+	</td>
+	<td>
+		@(Model.displayVar("comment_editcontrol1"))&nbsp;
+	</td>
+}
+	</tr>
+
+</table></div>
+
+
+@foreach (string _searchbuttons in Model.GetSection("searchbuttons", this)){
+<DIV class="rnr-brickcontents style2 rnr-b-srchbuttons @(Model.displayVar("brickclass_srchbuttons"))">@foreach (string _search_button in Model.GetSection("search_button", this)){
+<A href="#" class="rnr-button main" @(Model.displayVar("searchbutton_attrs"))>Search</a>
+} 
+@foreach (string _reset_button in Model.GetSection("reset_button", this)){
+<A href="#" class="rnr-button" @(Model.displayVar("resetbutton_attrs"))>Reset</a>
+}
+@foreach (string _back_button in Model.GetSection("back_button", this)){
+<A href="#" class="rnr-button" @(Model.displayVar("backbutton_attrs"))>Back to list</a>
+}</div>}
+
+
+</div>
+}
+
+</div>
+
+
+</div>
+}
+
+
+		</div>
+		<div class="rnr-middle">
+			<DIV class="rnr-left @(Model.displayVar("blockclass_left"))">
+				
+			</div>
+			<DIV class="rnr-center @(Model.displayVar("blockclass_center"))">
+				
+			</div>
+			<DIV class="rnr-right @(Model.displayVar("blockclass_right"))">
+				
+			</div>
+		</div>
+		<DIV class="rnr-bottom @(Model.displayVar("blockclass_bottom"))">
+			
+		</div>
+	</div>
+		
+		{Html.RenderSharedView("footer");}
+	}
+	</body>
+</html>

@@ -1,0 +1,33 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<edit_controls>
+	<jscode>@(Model.displayVar("linkdata"))</jscode>
+	<control field="date_approved">
+	@(Model.displayVar("date_approved_editcontrol"))
+	</control>
+	<control field="accept">
+	@(Model.displayVar("accept_editcontrol"))
+	</control>
+	<control field="nonaccept">
+	@(Model.displayVar("nonaccept_editcontrol"))
+	</control>
+	<control field="status">
+	@(Model.displayVar("status_editcontrol"))
+	</control>
+	<control field="groupNumber">
+	@(Model.displayVar("groupNumber_editcontrol"))
+	</control>
+	<message>@(Model.displayVar("message"))</message>
+</edit_controls>

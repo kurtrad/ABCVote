@@ -1,0 +1,33 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<edit_controls>
+	<jscode>@(Model.displayVar("linkdata"))</jscode>
+	<control field="username">
+	@(Model.displayVar("username_editcontrol"))
+	</control>
+	<control field="password">
+	@(Model.displayVar("password_editcontrol"))
+	</control>
+	<control field="byear">
+	@(Model.displayVar("byear_editcontrol"))
+	</control>
+	<control field="eyear">
+	@(Model.displayVar("eyear_editcontrol"))
+	</control>
+	<control field="role">
+	@(Model.displayVar("role_editcontrol"))
+	</control>
+	<message>@(Model.displayVar("message"))</message>
+</edit_controls>

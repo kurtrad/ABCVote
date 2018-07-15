@@ -1,0 +1,30 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<edit_controls>
+	<jscode>@(Model.displayVar("linkdata"))</jscode>
+	<control field="committee_member">
+	@(Model.displayVar("committee_member_editcontrol"))
+	</control>
+	<control field="date_voted">
+	@(Model.displayVar("date_voted_editcontrol"))
+	</control>
+	<control field="vote">
+	@(Model.displayVar("vote_editcontrol"))
+	</control>
+	<control field="comment">
+	@(Model.displayVar("comment_editcontrol"))
+	</control>
+	<message>@(Model.displayVar("message"))</message>
+</edit_controls>

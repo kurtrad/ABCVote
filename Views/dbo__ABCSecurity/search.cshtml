@@ -1,0 +1,212 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<!doctype html>@(new HtmlString(MVCFunctions.GetBuferContentAndClearBufer()))
+<HTML @(Model.displayVar("html_attrs"))>
+	<head>
+		<META http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<title>@(Model.displayVar("pagetitle"))</title>
+
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<LINK REL="stylesheet" href="@(webRootPath)styles/default.css" type="text/css" />
+		@foreach (string _rtlCSS in Model.GetSection("rtlCSS", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)styles/defaultRTL.css" type="text/css" />
+		}
+		@foreach (string _styleCSSFiles in Model.GetSection("styleCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("stylepath"))" type="text/css" />
+		}
+		@foreach (string _pageCSSFiles in Model.GetSection("pageCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("pagestylepath"))" type="text/css" />
+		}
+	</head>
+	
+	<BODY class="@(Model.displayVar("stylename")) function-search" @(Model.displayVar("bodyattrs"))>
+	@foreach (string _body in Model.GetSection("body", this)){
+		{Html.RenderSharedView("header");}
+	<div class="rnr-page">
+		<DIV class="rnr-top @(Model.displayVar("blockclass_top"))">
+			
+
+@foreach (string _container_search in Model.GetSection("container_search", this)){
+<div class="rnr-c rnr-cv rnr-c-search">
+
+@foreach (string _searchheader in Model.GetSection("searchheader", this)){
+<DIV class="rnr-brickcontents style2 rnr-b-srchheader @(Model.displayVar("brickclass_srchheader"))"><span>	<h1>@(Model.displayVar("pagetitlelabel dbo__ABCSecurity search"))</h1>
+</span></div>}
+
+
+@foreach (string _conditions_block in Model.GetSection("conditions_block", this)){
+<DIV class="rnr-brickcontents style1 rnr-b-srchconditions @(Model.displayVar("brickclass_srchconditions"))">	<center>
+	<span class=fieldname>Criteria:&nbsp;</span>	
+	<INPUT type="radio" class="rnr-radio-button" name="srchType@(Model.displayVar("id"))" @(Model.displayVar("all_checkbox")) /><label for="all_checkbox"> All conditions</label>
+	&nbsp;&nbsp;&nbsp;
+	<INPUT type="radio" class="rnr-radio-button" name="srchType@(Model.displayVar("id"))" @(Model.displayVar("any_checkbox")) /><label for="any_checkbox"> Any condition</label>
+	</center></div>}
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-wrapper @(Model.displayVar("wrapperclass_fields")) rnr-wrapper rnr-cbw-fields">
+
+@foreach (string _container_fields in Model.GetSection("container_fields", this)){
+<div class="rnr-c rnr-cv rnr-c-fields">
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-srchfields @(Model.displayVar("brickclass_srchfields"))"><table class="fieldGrid">
+	<tr>
+		<td>&nbsp;</td>
+		<td>NOT</td>
+		<td colspan=3>&nbsp; </td>
+	</tr>
+	<TR class="@(Model.displayVar("fielddispclass_username"))">
+	@foreach (string _username_fieldblock in Model.GetSection("username_fieldblock", this)){		
+	<td>
+		@(Model.displayVar("label dbo__ABCSecurity username"))
+	</td>
+	<td>
+		<INPUT type="checkbox" @(Model.displayVar("username_notbox")) />
+	</td>
+	<td>
+		@(Model.displayVar("searchtype_username"))
+	</td>
+	<td>
+		@(Model.displayVar("username_editcontrol"))&nbsp;
+	</td>
+	<td>
+		@(Model.displayVar("username_editcontrol1"))&nbsp;
+	</td>
+}
+	</tr>
+	<TR class="@(Model.displayVar("fielddispclass_password"))">
+	@foreach (string _password_fieldblock in Model.GetSection("password_fieldblock", this)){		
+	<td>
+		@(Model.displayVar("label dbo__ABCSecurity password"))
+	</td>
+	<td>
+		<INPUT type="checkbox" @(Model.displayVar("password_notbox")) />
+	</td>
+	<td>
+		@(Model.displayVar("searchtype_password"))
+	</td>
+	<td>
+		@(Model.displayVar("password_editcontrol"))&nbsp;
+	</td>
+	<td>
+		@(Model.displayVar("password_editcontrol1"))&nbsp;
+	</td>
+}
+	</tr>
+	<TR class="@(Model.displayVar("fielddispclass_byear"))">
+	@foreach (string _byear_fieldblock in Model.GetSection("byear_fieldblock", this)){		
+	<td>
+		@(Model.displayVar("label dbo__ABCSecurity byear"))
+	</td>
+	<td>
+		<INPUT type="checkbox" @(Model.displayVar("byear_notbox")) />
+	</td>
+	<td>
+		@(Model.displayVar("searchtype_byear"))
+	</td>
+	<td>
+		@(Model.displayVar("byear_editcontrol"))&nbsp;
+	</td>
+	<td>
+		@(Model.displayVar("byear_editcontrol1"))&nbsp;
+	</td>
+}
+	</tr>
+	<TR class="@(Model.displayVar("fielddispclass_eyear"))">
+	@foreach (string _eyear_fieldblock in Model.GetSection("eyear_fieldblock", this)){		
+	<td>
+		@(Model.displayVar("label dbo__ABCSecurity eyear"))
+	</td>
+	<td>
+		<INPUT type="checkbox" @(Model.displayVar("eyear_notbox")) />
+	</td>
+	<td>
+		@(Model.displayVar("searchtype_eyear"))
+	</td>
+	<td>
+		@(Model.displayVar("eyear_editcontrol"))&nbsp;
+	</td>
+	<td>
+		@(Model.displayVar("eyear_editcontrol1"))&nbsp;
+	</td>
+}
+	</tr>
+	<TR class="@(Model.displayVar("fielddispclass_role"))">
+	@foreach (string _role_fieldblock in Model.GetSection("role_fieldblock", this)){		
+	<td>
+		@(Model.displayVar("label dbo__ABCSecurity role"))
+	</td>
+	<td>
+		<INPUT type="checkbox" @(Model.displayVar("role_notbox")) />
+	</td>
+	<td>
+		@(Model.displayVar("searchtype_role"))
+	</td>
+	<td>
+		@(Model.displayVar("role_editcontrol"))&nbsp;
+	</td>
+	<td>
+		@(Model.displayVar("role_editcontrol1"))&nbsp;
+	</td>
+}
+	</tr>
+
+</table></div>
+
+
+@foreach (string _searchbuttons in Model.GetSection("searchbuttons", this)){
+<DIV class="rnr-brickcontents style2 rnr-b-srchbuttons @(Model.displayVar("brickclass_srchbuttons"))">@foreach (string _search_button in Model.GetSection("search_button", this)){
+<A href="#" class="rnr-button main" @(Model.displayVar("searchbutton_attrs"))>Search</a>
+} 
+@foreach (string _reset_button in Model.GetSection("reset_button", this)){
+<A href="#" class="rnr-button" @(Model.displayVar("resetbutton_attrs"))>Reset</a>
+}
+@foreach (string _back_button in Model.GetSection("back_button", this)){
+<A href="#" class="rnr-button" @(Model.displayVar("backbutton_attrs"))>Back to list</a>
+}</div>}
+
+
+</div>
+}
+
+</div>
+
+
+</div>
+}
+
+
+		</div>
+		<div class="rnr-middle">
+			<DIV class="rnr-left @(Model.displayVar("blockclass_left"))">
+				
+			</div>
+			<DIV class="rnr-center @(Model.displayVar("blockclass_center"))">
+				
+			</div>
+			<DIV class="rnr-right @(Model.displayVar("blockclass_right"))">
+				
+			</div>
+		</div>
+		<DIV class="rnr-bottom @(Model.displayVar("blockclass_bottom"))">
+			
+		</div>
+	</div>
+		
+		{Html.RenderSharedView("footer");}
+	}
+	</body>
+</html>

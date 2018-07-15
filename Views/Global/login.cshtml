@@ -1,0 +1,134 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<!doctype html>@(new HtmlString(MVCFunctions.GetBuferContentAndClearBufer()))
+<HTML @(Model.displayVar("html_attrs"))>
+	<head>
+		<META http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<title>@(Model.displayVar("pagetitle"))</title>
+
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<LINK REL="stylesheet" href="@(webRootPath)styles/default.css" type="text/css" />
+		@foreach (string _rtlCSS in Model.GetSection("rtlCSS", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)styles/defaultRTL.css" type="text/css" />
+		}
+		@foreach (string _styleCSSFiles in Model.GetSection("styleCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("stylepath"))" type="text/css" />
+		}
+		@foreach (string _pageCSSFiles in Model.GetSection("pageCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("pagestylepath"))" type="text/css" />
+		}
+	</head>
+	
+	<BODY class="@(Model.displayVar("stylename")) function-login" @(Model.displayVar("bodyattrs"))>
+	@foreach (string _body in Model.GetSection("body", this)){
+		{Html.RenderSharedView("header");}
+	<div class="rnr-page">
+		<DIV class="rnr-top @(Model.displayVar("blockclass_top"))">
+			
+
+@foreach (string _container_login in Model.GetSection("container_login", this)){
+<div class="rnr-c rnr-cv rnr-c-login">
+
+@foreach (string _loginheader in Model.GetSection("loginheader", this)){
+<DIV class="rnr-brickcontents style2 rnr-b-loginheader @(Model.displayVar("brickclass_loginheader"))"><span>	<h1>@(Model.displayVar("pagetitlelabel login"))</h1>
+</span></div>}
+
+
+@foreach (string _message_block in Model.GetSection("message_block", this)){
+<DIV class="rnr-brickcontents style1 rnr-b-message @(Model.displayVar("brickclass_message"))"><div class="rnr-message">@(Model.displayVar("message"))</div></div>}
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-wrapper @(Model.displayVar("wrapperclass_fields")) rnr-wrapper rnr-cbw-fields">
+
+@foreach (string _container_fields in Model.GetSection("container_fields", this)){
+<div class="rnr-c rnr-cv rnr-c-fields">
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-loginfields @(Model.displayVar("brickclass_loginfields"))"><table class="fieldGrid">
+@foreach (string _main_loginfields in Model.GetSection("main_loginfields", this)){
+	<tr>
+		<td>
+			@foreach (string _username_label in Model.GetSection("username_label", this)){<text>Username:</text>}
+		</td>
+		<td class="rnr-control">
+			<INPUT type="text" name="username" @(Model.displayVar("username_attrs")) />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			@foreach (string _password_label in Model.GetSection("password_label", this)){<text>Password:</text>}
+		</td>
+		<td class="rnr-control">
+			<INPUT type="password" name="password" @(Model.displayVar("password_attrs")) />
+		</td>
+	</tr>
+						<tr>
+		<td>
+			@foreach (string _remember_password_label in Model.GetSection("remember_password_label", this)){<text>Remember Password:</text>}
+		</td>
+		<td>
+			<INPUT type="checkbox" @(Model.displayVar("rememberbox_attrs")) />
+		</td>
+	</tr>
+}	
+</table>
+								</div>
+
+
+
+
+
+@foreach (string _loginbuttons in Model.GetSection("loginbuttons", this)){
+<DIV class="rnr-brickcontents style2 rnr-b-loginbuttons @(Model.displayVar("brickclass_loginbuttons"))">@foreach (string _signin_button in Model.GetSection("signin_button", this)){
+<A href="#" class="rnr-button main" @(Model.displayVar("loginlink_attrs"))>Submit</a>
+}
+@foreach (string _continue_button in Model.GetSection("continue_button", this)){
+<A href="#" class="rnr-button" @(Model.displayVar("continuebutton_attrs"))>Continue</a>
+}
+</div>}
+
+
+</div>
+}
+
+</div>
+
+
+</div>
+}
+
+
+		</div>
+		<div class="rnr-middle">
+			<DIV class="rnr-left @(Model.displayVar("blockclass_left"))">
+				
+			</div>
+			<DIV class="rnr-center @(Model.displayVar("blockclass_center"))">
+				
+			</div>
+			<DIV class="rnr-right @(Model.displayVar("blockclass_right"))">
+				
+			</div>
+		</div>
+		<DIV class="rnr-bottom @(Model.displayVar("blockclass_bottom"))">
+			
+		</div>
+	</div>
+		
+		{Html.RenderSharedView("footer");}
+	}
+	</body>
+</html>

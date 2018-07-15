@@ -1,0 +1,189 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<!doctype html>@(new HtmlString(MVCFunctions.GetBuferContentAndClearBufer()))
+<HTML @(Model.displayVar("html_attrs"))>
+	<head>
+		<META http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<title>@(Model.displayVar("pagetitle"))</title>
+
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<LINK REL="stylesheet" href="@(webRootPath)styles/default.css" type="text/css" />
+		@foreach (string _rtlCSS in Model.GetSection("rtlCSS", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)styles/defaultRTL.css" type="text/css" />
+		}
+		@foreach (string _styleCSSFiles in Model.GetSection("styleCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("stylepath"))" type="text/css" />
+		}
+		@foreach (string _pageCSSFiles in Model.GetSection("pageCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("pagestylepath"))" type="text/css" />
+		}
+	</head>
+	
+	<BODY class="@(Model.displayVar("stylename")) function-import" @(Model.displayVar("bodyattrs"))>
+	@foreach (string _body in Model.GetSection("body", this)){
+		{Html.RenderSharedView("header");}
+	<div class="rnr-page">
+		<DIV class="rnr-top @(Model.displayVar("blockclass_top"))">
+			
+
+@foreach (string _container_import in Model.GetSection("container_import", this)){
+<div class="rnr-c rnr-cv rnr-c-import">
+
+
+<DIV class="rnr-brickcontents style2 rnr-b-importheader @(Model.displayVar("brickclass_importheader"))"><span>	<h1>@(Model.displayVar("pagetitlelabel ABC_Voting_Submitted import"))</h1>
+</span></div>
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-errormessage @(Model.displayVar("brickclass_errormessage"))">@(Model.displayVar("error_message"))</div>
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-wrapper @(Model.displayVar("wrapperclass_importfields")) rnr-wrapper rnr-cbw-importfields">
+
+@foreach (string _container_importfields in Model.GetSection("container_importfields", this)){
+<div class="rnr-c rnr-cv rnr-c-importfields">
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-importheader_text @(Model.displayVar("brickclass_importheader_text"))">Drag and drop a comma-separated (.csv) or Excel (.xlsx) file or choose an option below.</div>
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-importfields @(Model.displayVar("brickclass_importfields"))"><DIV id="importUploadFallback@(Model.displayVar("id"))" style="display: none;">
+<table class="fieldGrid">
+	<tr>
+		<td>
+			Select file with data.
+		</td>
+		<td>
+			<INPUT type="File" id="importFile@(Model.displayVar("id"))" name="importFile@(Model.displayVar("id"))" />
+		</td>
+	</tr>
+</table>
+</div>
+
+<div class="rnr-import-settings">
+<A href="#" class="rnr-button" id="uploadImportFile@(Model.displayVar("id"))"> Browse... </a>
+</div>
+
+<DIV id="importDropzone@(Model.displayVar("id"))" class="import-dragndrop-area" style="display: none;">
+	<div class="import-dragtext"> Drag files here </div>
+</div>
+
+<div class="rnr-import-settings">
+<A id="switchToTextInsertion@(Model.displayVar("id"))" href="#" class="rnr-button"> Copy and paste text </a>
+</div>
+</div>
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-import_rawtext_control @(Model.displayVar("brickclass_import_rawtext_control"))"><DIV id="copyAndPasteText@(Model.displayVar("id"))">
+<div> Copy and Paste your text data here: </div>
+<TEXTAREA class="rnr-import-textarea" id="importText@(Model.displayVar("id"))">
+</textarea>
+</div></div>
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-import_preview @(Model.displayVar("brickclass_import_preview"))"><div>
+<DIV id="importSettings@(Model.displayVar("id"))" class="rnr-import-settings">
+	<div class="rnr-is-control">
+		<INPUT class="rnr-checkbox" type="checkbox" checked="checked" id="columnsInFirstLine@(Model.displayVar("id"))" name="columnsInFirstLine" /><label> Column headers in the first line </label>
+	</div>
+
+	<DIV id="delimiterSettings@(Model.displayVar("id"))" class="rnr-is-control" style="display:none;">
+		<INPUT name="importDelimiter" class="importDelimiters" type="radio" value="," /><label> Comma </label>
+		<INPUT name="importDelimiter" class="importDelimiters" type="radio" value="&#9;" /><label> Tab </label>
+		<INPUT name="importDelimiter" class="importDelimiters" type="radio" value="other" /><label> Other </label>
+		<INPUT id="customDelimiter@(Model.displayVar("id"))" value=";" type="text" />
+	</div>
+
+	<DIV id="dateFormatSettings@(Model.displayVar("id"))" class="rnr-is-control" style="display:none;">
+		<label>Date format:</label>
+		<INPUT id="importDateFormat@(Model.displayVar("id"))" type="text" />
+	</div>
+
+</div>
+
+<DIV id="importGridHead@(Model.displayVar("id"))" class="rnr-import-head-preview">
+</div>
+<DIV id="importGridBody@(Model.displayVar("id"))" class="rnr-import-body-preview">
+	<TABLE id="importPreviewBodyTable@(Model.displayVar("id"))">
+	</table>
+</div>
+<DIV id="importErrorMessage@(Model.displayVar("id"))" class="rnr-error" style="display:none;"></div>
+</div></div>
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-import_process @(Model.displayVar("brickclass_import_process"))"><DIV id="importProgress@(Model.displayVar("id"))" class="rnr-import-progress">
+</div>
+</div>
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-import_results @(Model.displayVar("brickclass_import_results"))"><DIV id="reportText@(Model.displayVar("id"))" class="rnr-import-report">
+</div>
+</div>
+
+
+
+<DIV class="rnr-brickcontents style2 rnr-b-importbuttons @(Model.displayVar("brickclass_importbuttons"))"><div class="rnr-buttons-right">
+	<A href="#" class="rnr-button" id="backToList@(Model.displayVar("id"))">Back to list</a>
+	<A href="#" class="rnr-button" id="newImport@(Model.displayVar("id"))" style="display: none;">New import</a>
+</div>
+<div class="rnr-buttons-left">
+	<A id="continueTextImport@(Model.displayVar("id"))" href="#" class="rnr-button disabled main" style="display: none;"> Continue </a>	
+	<A id="importButton@(Model.displayVar("id"))" href="#" class="rnr-button" style="display: none;">Import Data</a>	
+	<A href="#" class="rnr-button" id="backTo@(Model.displayVar("id"))" style="display: none;">Back</a>
+	
+	<A id="saveReport@(Model.displayVar("id"))" href="#" class="rnr-button" style="display: none;">Save Report</a>
+	<A id="saveUnprocessedData@(Model.displayVar("id"))" href="#" class="rnr-button errorReportButtons@(Model.displayVar("id"))" style="display: none;">Download unprocessed data</a>
+	<A id="saveErrorReport@(Model.displayVar("id"))" href="#" class="rnr-button errorReportButtons@(Model.displayVar("id"))" style="display: none;">Download error log</a>
+</div>
+</div>
+
+
+</div>
+}
+
+</div>
+
+
+</div>
+}
+
+
+		</div>
+		<div class="rnr-middle">
+			<DIV class="rnr-left @(Model.displayVar("blockclass_left"))">
+				
+			</div>
+			<DIV class="rnr-center @(Model.displayVar("blockclass_center"))">
+				
+			</div>
+			<DIV class="rnr-right @(Model.displayVar("blockclass_right"))">
+				
+			</div>
+		</div>
+		<DIV class="rnr-bottom @(Model.displayVar("blockclass_bottom"))">
+			
+		</div>
+	</div>
+		
+		{Html.RenderSharedView("footer");}
+	}
+	</body>
+</html>

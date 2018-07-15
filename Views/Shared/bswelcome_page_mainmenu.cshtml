@@ -1,0 +1,162 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<div class="bs-welcome">
+
+		@foreach (string _item1_menulink in Model.GetSection("item1_menulink", this)){
+		<div class=" clearfix col-lg-12 col-md-12 col-sm-12">
+	<h2>@(Model.displayVar("item1_icon"))@(Model.displayVar("item1_title"))</h2>
+		@foreach (string _item1_comments in Model.GetSection("item1_comments", this)){
+		<div class="bs-welcome-group-comments">
+			@(Model.displayVar("item1_comments_text"))
+		</div>
+		}
+	
+	</div>
+	}
+	
+	
+		<div class="clearfix">
+	</div>
+		@foreach (string _item2_menulink in Model.GetSection("item2_menulink", this)){
+		<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="bs-welcome-item">
+			<DIV class="bs-welcome-header" @(Model.displayVar("item2_menulink_style"))> 
+				<A @(Model.displayVar("item2_menulink_attrs"))>@(Model.displayVar("item2_icon"))@(Model.displayVar("item2_title"))</a>
+			</div>
+			@foreach (string _item2_comments in Model.GetSection("item2_comments", this)){
+			<div class="bs-welcome-content">
+				@(Model.displayVar("item2_comments_text"))
+			</div>
+			}
+		</div>
+	</div>
+	}
+	
+	
+		@foreach (string _item3_menulink in Model.GetSection("item3_menulink", this)){
+		<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="bs-welcome-item">
+			<DIV class="bs-welcome-header" @(Model.displayVar("item3_menulink_style"))> 
+				<A @(Model.displayVar("item3_menulink_attrs"))>@(Model.displayVar("item3_icon"))@(Model.displayVar("item3_title"))</a>
+			</div>
+			@foreach (string _item3_comments in Model.GetSection("item3_comments", this)){
+			<div class="bs-welcome-content">
+				@(Model.displayVar("item3_comments_text"))
+			</div>
+			}
+		</div>
+	</div>
+	}
+	
+	
+		@foreach (string _item4_menulink in Model.GetSection("item4_menulink", this)){
+		<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="bs-welcome-item">
+			<DIV class="bs-welcome-header" @(Model.displayVar("item4_menulink_style"))> 
+				<A @(Model.displayVar("item4_menulink_attrs"))>@(Model.displayVar("item4_icon"))@(Model.displayVar("item4_title"))</a>
+			</div>
+			@foreach (string _item4_comments in Model.GetSection("item4_comments", this)){
+			<div class="bs-welcome-content">
+				@(Model.displayVar("item4_comments_text"))
+			</div>
+			}
+		</div>
+	</div>
+	}
+	
+	
+		@foreach (string _item5_menulink in Model.GetSection("item5_menulink", this)){
+		<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="bs-welcome-item">
+			<DIV class="bs-welcome-header" @(Model.displayVar("item5_menulink_style"))> 
+				<A @(Model.displayVar("item5_menulink_attrs"))>@(Model.displayVar("item5_icon"))@(Model.displayVar("item5_title"))</a>
+			</div>
+			@foreach (string _item5_comments in Model.GetSection("item5_comments", this)){
+			<div class="bs-welcome-content">
+				@(Model.displayVar("item5_comments_text"))
+			</div>
+			}
+		</div>
+	</div>
+	}
+	
+	
+		@foreach (string _item6_menulink in Model.GetSection("item6_menulink", this)){
+		<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="bs-welcome-item">
+			<DIV class="bs-welcome-header" @(Model.displayVar("item6_menulink_style"))> 
+				<A @(Model.displayVar("item6_menulink_attrs"))>@(Model.displayVar("item6_icon"))@(Model.displayVar("item6_title"))</a>
+			</div>
+			@foreach (string _item6_comments in Model.GetSection("item6_comments", this)){
+			<div class="bs-welcome-content">
+				@(Model.displayVar("item6_comments_text"))
+			</div>
+			}
+		</div>
+	</div>
+	}
+	
+	
+		@foreach (string _item7_menulink in Model.GetSection("item7_menulink", this)){
+		<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="bs-welcome-item">
+			<DIV class="bs-welcome-header" @(Model.displayVar("item7_menulink_style"))> 
+				<A @(Model.displayVar("item7_menulink_attrs"))>@(Model.displayVar("item7_icon"))@(Model.displayVar("item7_title"))</a>
+			</div>
+			@foreach (string _item7_comments in Model.GetSection("item7_comments", this)){
+			<div class="bs-welcome-content">
+				@(Model.displayVar("item7_comments_text"))
+			</div>
+			}
+		</div>
+	</div>
+	}
+	
+	
+		@foreach (string _item8_menulink in Model.GetSection("item8_menulink", this)){
+		<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="bs-welcome-item">
+			<DIV class="bs-welcome-header" @(Model.displayVar("item8_menulink_style"))> 
+				<A @(Model.displayVar("item8_menulink_attrs"))>@(Model.displayVar("item8_icon"))@(Model.displayVar("item8_title"))</a>
+			</div>
+			@foreach (string _item8_comments in Model.GetSection("item8_comments", this)){
+			<div class="bs-welcome-content">
+				@(Model.displayVar("item8_comments_text"))
+			</div>
+			}
+		</div>
+	</div>
+	}
+	
+	
+		@foreach (string _item9_menulink in Model.GetSection("item9_menulink", this)){
+		<div class="col-lg-3 col-md-4 col-sm-6">
+		<div class="bs-welcome-item">
+			<DIV class="bs-welcome-header" @(Model.displayVar("item9_menulink_style"))> 
+				<A @(Model.displayVar("item9_menulink_attrs"))>@(Model.displayVar("item9_icon"))@(Model.displayVar("item9_title"))</a>
+			</div>
+			@foreach (string _item9_comments in Model.GetSection("item9_comments", this)){
+			<div class="bs-welcome-content">
+				@(Model.displayVar("item9_comments_text"))
+			</div>
+			}
+		</div>
+	</div>
+	}
+	
+	
+</div>
+
+

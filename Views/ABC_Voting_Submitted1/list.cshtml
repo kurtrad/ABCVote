@@ -1,0 +1,669 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<!doctype html>@(new HtmlString(MVCFunctions.GetBuferContentAndClearBufer()))
+<HTML @(Model.displayVar("html_attrs"))>
+	<head>
+		<META http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<title>@(Model.displayVar("pagetitle"))</title>
+
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<LINK REL="stylesheet" href="@(webRootPath)styles/default.css" type="text/css" />
+		@foreach (string _rtlCSS in Model.GetSection("rtlCSS", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)styles/defaultRTL.css" type="text/css" />
+		}
+		@foreach (string _styleCSSFiles in Model.GetSection("styleCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("stylepath"))" type="text/css" />
+		}
+		@foreach (string _pageCSSFiles in Model.GetSection("pageCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("pagestylepath"))" type="text/css" />
+		}
+	</head>
+	
+	<BODY class="@(Model.displayVar("stylename")) function-list" @(Model.displayVar("bodyattrs"))>
+	@foreach (string _body in Model.GetSection("body", this)){
+		{Html.RenderSharedView("header");}
+	<div class="rnr-page">
+		<DIV class="rnr-top @(Model.displayVar("blockclass_top"))">
+			
+
+
+
+@foreach (string _container_toplinks in Model.GetSection("container_toplinks", this)){
+<div class="rnr-c rnr-ch rnr-c-toplinks">
+
+@foreach (string _security_block in Model.GetSection("security_block", this)){
+<DIV class="style1 rnr-bl rnr-b-loggedas @(Model.displayVar("brickclass_loggedas"))"><DIV id="login_block@(Model.displayVar("id"))">
+	@foreach (string _loggedas_message in Model.GetSection("loggedas_message", this)){ 
+	<span>Logged on as&nbsp;<b>@(Model.displayVar("username"))</b>&nbsp;</span> 
+	}
+	@foreach (string _guestloginbutton in Model.GetSection("guestloginbutton", this)){
+	<span>
+		<A href="#" class="rnr-button" @(Model.displayVar("guestloginlink_attrs"))>Login</a>
+	</span>
+	}
+	@foreach (string _logoutbutton in Model.GetSection("logoutbutton", this)){
+	<A href="#" class="rnr-button" @(Model.displayVar("logoutlink_attrs"))>Log out</a>
+	}
+
+</div></div>
+}
+
+
+@foreach (string _asearch_link in Model.GetSection("asearch_link", this)){
+<DIV class="style1 rnr-bl rnr-b-toplinks_advsearch @(Model.displayVar("brickclass_toplinks_advsearch"))">	<A href="@(webRootPath)ABC_Voting_Submitted1/search" class="rnr-button" @(Model.displayVar("advsearchlink_attrs"))>Advanced search</a>
+</div>
+}
+
+
+@foreach (string _import_link in Model.GetSection("import_link", this)){
+<DIV class="style1 rnr-bl rnr-b-toplinks_import @(Model.displayVar("brickclass_toplinks_import"))">	<A href="@(webRootPath)ABC_Voting_Submitted1/import?@(Model.displayVar("crosstable_attrs"))" class="rnr-button" @(Model.displayVar("importlink_attrs"))>Import</a>
+</div>
+}
+
+
+@foreach (string _export_link in Model.GetSection("export_link", this)){
+<DIV class="style1 rnr-bl rnr-b-toplinks_export @(Model.displayVar("brickclass_toplinks_export"))">	<A target="_blank" href="@(webRootPath)ABC_Voting_Submitted1/export" class="rnr-button" @(Model.displayVar("exportlink_attrs"))>Export results</a>
+</div>
+}
+
+
+
+@foreach (string _print_friendly in Model.GetSection("print_friendly", this)){
+<DIV class="style1 rnr-bl rnr-b-printpanel @(Model.displayVar("brickclass_printpanel"))"><DIV class="rnr-printpanelblock" id="printpanelblock@(Model.displayVar("id"))">
+<div class="rnr-printtab">
+<A data-icon="printdown" class="rnr-printicon" id="print_friendly_togger@(Model.displayVar("id"))" title="Print-friendly page"></a>
+</div>
+<div class="rnr-printpanel" >
+<TABLE class="rnr-printscope" id="print_friendly_scope@(Model.displayVar("id"))">
+	<tr>
+		<td class="rnr-printScopeCell">Scope:</td>
+		@foreach (string _print_friendly_all in Model.GetSection("print_friendly_all", this)){
+		<td class="rnr-printScopeCell"><INPUT type="radio" id="printAll@(Model.displayVar("id"))" data-href="ABC_Voting_Submitted1_print.aspx?all=1&amp;@(Model.displayVar("crosstable_attrs"))" name="printScope" />&nbsp;<LABEL for="printAll@(Model.displayVar("id"))">Print all pages</label></td>
+		}
+
+	</tr>
+	<tr>
+		<td></td>
+		<td class="rnr-printScopeCell"><INPUT type="radio" id="printPage@(Model.displayVar("id"))" data-href="ABC_Voting_Submitted1_print.aspx?@(Model.displayVar("crosstable_attrs"))" name="printScope" checked />&nbsp;<LABEL for="printPage@(Model.displayVar("id"))">Print this page</label></td>
+	</tr>
+		<tr>
+		<td></td>
+		<td class="rnr-printScopeCell"><INPUT type="radio" id="printSelection@(Model.displayVar("id"))" name="printScope" disabled="disabled" />&nbsp;<LABEL for="printSelection@(Model.displayVar("id"))" style="color: gray;">Print selected</label></td>
+	</tr>
+</table>
+
+@foreach (string _print_details in Model.GetSection("print_details", this)){
+<div class="rnr-printdetails">
+<INPUT type=checkbox id="printDetailsToggler@(Model.displayVar("id"))" />&nbsp;<LABEL for="printDetailsToggler@(Model.displayVar("id"))">Print details</label>
+	<DIV class="rnr-printdetailstables" id="printdetailstables@(Model.displayVar("id"))" style="display:none;">
+@foreach (string _print_details_dbo__ABCVotes in Model.GetSection("print_details_dbo__ABCVotes", this)){
+	
+		<div class="rnr-printdetialstable"><INPUT type=checkbox value="dbo__ABCVotes" id="printDetailsdbo__ABCVotes@(Model.displayVar("id"))" checked />&nbsp;<LABEL for="printDetailsdbo__ABCVotes@(Model.displayVar("id"))">ABCVotes</label></div>
+}
+	</div>
+</div>
+}
+
+<div class="rnr-printdetails">
+<LABEL for="printPerPage@(Model.displayVar("id"))">
+	Records Per Page:
+</label>&nbsp;<INPUT type=number id="printPerPage@(Model.displayVar("id"))" value="@(Model.displayVar("print_recspp"))" class="rnr-printrecspp" />&nbsp;
+</div>
+
+<div class="rnr-printbutton">
+<A href=# class="rnr-button button" id="print_friendly_button@(Model.displayVar("id"))">Print</a>
+</div>
+</div>
+</div>
+</div>
+}
+
+
+<div class="rnr-hfiller"></div>
+</div>
+}
+
+
+
+@foreach (string _container_hmenu in Model.GetSection("container_hmenu", this)){
+<div class="rnr-c rnr-ch rnr-c-hmenu">
+
+@foreach (string _menu_block in Model.GetSection("menu_block", this)){
+@(Model.displayVar("menu main horizontal"))}
+
+<div class="rnr-hfiller"></div>
+</div>
+}
+
+
+
+@foreach (string _container_search in Model.GetSection("container_search", this)){
+<div class="rnr-c rnr-ch rnr-c-search">
+
+@foreach (string _searchform_block in Model.GetSection("searchform_block", this)){
+<DIV class="style1 rnr-bl rnr-b-search @(Model.displayVar("brickclass_search"))">	<span>
+		@foreach (string _searchform_text in Model.GetSection("searchform_text", this)){
+		<INPUT type="text" @(Model.displayVar("searchfor_attrs")) size="25" />
+		}
+		@foreach (string _searchform_search in Model.GetSection("searchform_search", this)){
+			<A href="#" class="rnr-button img" data-icon="search" @(Model.displayVar("searchbutton_attrs"))></a>
+		}
+		@foreach (string _searchform_showall in Model.GetSection("searchform_showall", this)){	
+		<A href="#" class="rnr-button" @(Model.displayVar("showAllCont_attrs")) @(Model.displayVar("showallbutton_attrs"))>Show all</a>
+		}
+	</span>
+</div>
+}
+
+
+@foreach (string _searchformbuttons_block in Model.GetSection("searchformbuttons_block", this)){
+<DIV class="style1 rnr-bl rnr-b-search_buttons @(Model.displayVar("brickclass_search_buttons"))">@foreach (string _searchPanelTopButtons in Model.GetSection("searchPanelTopButtons", this)){
+<span>
+	<A href="#" class="rnr-button img" id="showSrchWin@(Model.displayVar("id"))" data-icon="panelfloat" @(Model.displayVar("showHideSearchWin_attrs"))></a>
+	<A href="#" class="rnr-button img" id="showOptPanel@(Model.displayVar("id"))" data-icon="paneldown" @(Model.displayVar("showHideSearchPanel_attrs"))></a>
+</span>
+}
+</div>
+}
+
+
+@foreach (string _searchsaving_block in Model.GetSection("searchsaving_block", this)){
+<DIV class="style1 rnr-bl rnr-b-search_saving_buttons @(Model.displayVar("brickclass_search_saving_buttons"))"></div>
+}
+
+<div class="rnr-hfiller"></div>
+@foreach (string _details_block in Model.GetSection("details_block", this)){
+<DIV class="style1 rnr-br rnr-b-details_found @(Model.displayVar("brickclass_details_found"))">	<SPAN @(Model.displayVar("details_attrs"))>
+			Details found: <b><span class="rnr-details_found_count">@(Model.displayVar("records_found"))</span></b>
+	</span>
+</div>
+}
+
+
+@foreach (string _pages_block in Model.GetSection("pages_block", this)){
+<DIV class="style1 rnr-br rnr-b-page_of @(Model.displayVar("brickclass_page_of"))">	<SPAN @(Model.displayVar("pages_attrs"))>
+		Page <b>@(Model.displayVar("page"))</b> of <b>@(Model.displayVar("maxpages"))</b>
+	</span>
+
+</div>
+}
+
+
+@foreach (string _recordspp_block in Model.GetSection("recordspp_block", this)){
+<DIV class="style1 rnr-br rnr-b-recsperpage @(Model.displayVar("brickclass_recsperpage"))">	<SPAN id="recordspp_block@(Model.displayVar("id"))" name="recordspp_block@(Model.displayVar("id"))">
+			Records Per Page:&nbsp;@(Model.displayVar("recsPerPage"))
+	</span>	
+</div>
+}
+
+
+</div>
+}
+
+
+
+@foreach (string _container_recordcontrols in Model.GetSection("container_recordcontrols", this)){
+<div class="rnr-c rnr-ch rnr-c-recordcontrols">
+
+@foreach (string _newrecord_controls_block in Model.GetSection("newrecord_controls_block", this)){
+<DIV class="style1 rnr-bl rnr-b-recordcontrols_new @(Model.displayVar("brickclass_recordcontrols_new"))">		@foreach (string _add_link in Model.GetSection("add_link", this)){
+		<A href="@(webRootPath)ABC_Voting_Submitted1/add@(Model.displayVar("addlink_getparams"))" class="rnr-button" @(Model.displayVar("addlink_attrs"))>Add new</a>
+	}
+
+	
+
+</div>
+}
+
+
+@foreach (string _record_controls_block in Model.GetSection("record_controls_block", this)){
+<DIV class="style1 rnr-bl rnr-b-recordcontrol @(Model.displayVar("brickclass_recordcontrol"))">			@foreach (string _selectall_link in Model.GetSection("selectall_link", this)){
+		<A href="#" class="rnr-button" @(Model.displayVar("selectalllink_span")) @(Model.displayVar("selectalllink_attrs"))>Select all</a>
+	}
+
+	
+		@foreach (string _deleteselected_link in Model.GetSection("deleteselected_link", this)){
+		<A href="#" class="rnr-button" @(Model.displayVar("deleteselectedlink_attrs")) @(Model.displayVar("deleteselectedlink_span"))>Delete selected</a>
+	}
+
+		@foreach (string _exportselected_link in Model.GetSection("exportselected_link", this)){
+		<A href="#" class="rnr-button" @(Model.displayVar("exportselectedlink_attrs")) @(Model.displayVar("exportselectedlink_span"))>Export selected</a>
+	}
+
+</div>
+}
+
+<div class="rnr-hfiller"></div>
+</div>
+}
+
+
+		</div>
+		<div class="rnr-middle">
+			<DIV class="rnr-left @(Model.displayVar("blockclass_left"))">
+				
+
+@foreach (string _container_left in Model.GetSection("container_left", this)){
+<div class="rnr-c rnr-cv rnr-c-left">
+
+@foreach (string _searchPanel in Model.GetSection("searchPanel", this)){
+<DIV class="rnr-brickcontents style1 rnr-b-searchpanel @(Model.displayVar("brickclass_searchpanel"))"><div class="searchPanelContainer">
+<DIV class="searchOptions bottomPanelBorder" @(Model.displayVar("srchOpt_attrs"))>
+	
+	<!-- Search panel content -->
+	<div class="srchCritTop" style="display: none;">
+		Criteria:&nbsp;
+		<INPUT type="radio" name="srchType@(Model.displayVar("id"))" class="rnr-radio-button" @(Model.displayVar("all_checkbox")) />&nbsp;@foreach (string _all_checkbox_label in Model.GetSection("all_checkbox_label", this)){<span>all</span>}
+		&nbsp;&nbsp;&nbsp;
+		<INPUT type="radio" name="srchType@(Model.displayVar("id"))" class="rnr-radio-button" @(Model.displayVar("any_checkbox")) />&nbsp;@foreach (string _any_checkbox_label in Model.GetSection("any_checkbox_label", this)){<span>any</span>}
+	</div>
+	
+	<div class="addOption">
+		<span class="rnr-buttons-group">
+			<A href="#" id="showHideControlChooseMenu@(Model.displayVar("id"))" class="rnr-button" @(Model.displayVar("showHideCtrls_attrs"))>Add field</a>
+		</span>
+		
+		<A href="#" id="showHideSearchType@(Model.displayVar("id"))" class="rnr-button" @(Model.displayVar("showHideCtrlsOpt_attrs"))>@(Model.displayVar("showHideOpt_mess"))</a>
+	</div>
+	
+
+	<TABLE class="controlsBlock @(Model.displayVar("controls_block_class"))">
+				@foreach (string _searchCtrlBlock in Model.GetSection("searchCtrlBlock", this)){
+		<TR class="srchPanelRow" @(Model.displayVar("filterRow_attrs"))>
+			<td class="srchPanelCell">@(Model.displayVar("delCtrlButt"))</td>	
+			<td class="srchPanelCell">@(Model.displayVar("fLabel")):&nbsp;</td>
+			<td class="srchPanelCell srchPanelCell2">
+				<div class="rnr-searchtype">@(Model.displayVar("searchtype"))</div>
+				<div class="rnr-searchcontrol">@(Model.displayVar("searchcontrol"))</div>
+				<div class="rnr-searchcontrol">@(Model.displayVar("searchcontrol1"))</div>
+			</td>	
+		</tr>
+		}
+	</table>	
+
+
+	
+	<DIV class="bottomSearchButt" align="left" @(Model.displayVar("bottomSearchButt_attrs"))>
+		<A href="#" class="rnr-button" id="searchButton@(Model.displayVar("id"))" @(Model.displayVar("searchbutton_attrs"))>Search</a>
+		<A href="#" class="rnr-button" @(Model.displayVar("showAllCont_attrs")) @(Model.displayVar("showallbutton_attrs"))>
+		Show all
+		</a>
+	</div>
+</div>
+
+</div></div>}
+
+
+
+</div>
+}
+
+
+			</div>
+			<DIV class="rnr-center @(Model.displayVar("blockclass_center"))">
+				
+
+@foreach (string _container_message in Model.GetSection("container_message", this)){
+<div class="rnr-c rnr-ch rnr-c-message">
+
+@foreach (string _message_block in Model.GetSection("message_block", this)){
+<DIV class="style1 rnr-bc rnr-b-message @(Model.displayVar("brickclass_message"))"><div class="rnr-message">@(Model.displayVar("message"))</div></div>
+}
+
+
+</div>
+}
+
+
+
+@foreach (string _container_grid in Model.GetSection("container_grid", this)){
+
+
+foreach (string _grid_block in Model.GetSection("grid_block", this)){
+						<table class="rnr-c rnr-cont rnr-c-grid rnr-b-grid rnr-gridtable  hoverable " cellpadding="0" >
+						<thead>
+															@foreach (string _grid_header in Model.GetSection("grid_header", this)){
+								<TR class="rnr-toprow style1 @(Model.displayVar("gridHeader_class"))">
+									@foreach (string _record_header in Model.GetSection("record_header", this)){
+									foreach (string _listIcons_column in Model.GetSection("listIcons_column", this)){
+									<th iEditCont="all">&nbsp;</th>
+									}	
+
+																		foreach (string _checkbox_column in Model.GetSection("checkbox_column", this)){
+									<th class="rnr-bc">
+										<INPUT type="checkbox" @(Model.displayVar("checkboxheader_attrs")) />
+									</th>
+									}
+
+																		foreach (string _ABC_Voting_Submitted_dtable_column in Model.GetSection("ABC_Voting_Submitted_dtable_column", this)){
+									<th >&nbsp;</th>
+									}
+																										foreach (string _groupNumber_fieldheadercolumn in Model.GetSection("groupNumber_fieldheadercolumn", this)){
+									<TH class="rnr-gridfieldlabel @(Model.displayVar("groupNumber_class"))">
+									@foreach (string _groupNumber_fieldheader in Model.GetSection("groupNumber_fieldheader", this)){
+																				<SPAN @(Model.displayVar("groupNumber_orderlinkattrs"))>
+											@(Model.displayVar("label ABC_Voting_Submitted groupNumber"))
+										</span>
+									}
+									</th>
+									}
+
+																	foreach (string _species_fieldheadercolumn in Model.GetSection("species_fieldheadercolumn", this)){
+									<TH class="rnr-gridfieldlabel @(Model.displayVar("species_class"))">
+									@foreach (string _species_fieldheader in Model.GetSection("species_fieldheader", this)){
+																				<SPAN @(Model.displayVar("species_orderlinkattrs"))>
+											@(Model.displayVar("label ABC_Voting_Submitted species"))
+										</span>
+									}
+									</th>
+									}
+
+																	foreach (string _batch_number_fieldheadercolumn in Model.GetSection("batch_number_fieldheadercolumn", this)){
+									<TH class="rnr-gridfieldlabel @(Model.displayVar("batch_number_class"))">
+									@foreach (string _batch_number_fieldheader in Model.GetSection("batch_number_fieldheader", this)){
+																				<SPAN @(Model.displayVar("batch_number_orderlinkattrs"))>
+											@(Model.displayVar("label ABC_Voting_Submitted batch_number"))
+										</span>
+									}
+									</th>
+									}
+
+																	foreach (string _secretary_comments_fieldheadercolumn in Model.GetSection("secretary_comments_fieldheadercolumn", this)){
+									<TH class="rnr-gridfieldlabel @(Model.displayVar("secretary_comments_class"))">
+									@foreach (string _secretary_comments_fieldheader in Model.GetSection("secretary_comments_fieldheader", this)){
+																				<SPAN @(Model.displayVar("secretary_comments_orderlinkattrs"))>
+											@(Model.displayVar("label ABC_Voting_Submitted secretary_comments"))
+										</span>
+									}
+									</th>
+									}
+
+																	foreach (string _secretary_private_comments_fieldheadercolumn in Model.GetSection("secretary_private_comments_fieldheadercolumn", this)){
+									<TH class="rnr-gridfieldlabel @(Model.displayVar("secretary_private_comments_class"))">
+									@foreach (string _secretary_private_comments_fieldheader in Model.GetSection("secretary_private_comments_fieldheader", this)){
+																				<SPAN @(Model.displayVar("secretary_private_comments_orderlinkattrs"))>
+											@(Model.displayVar("label ABC_Voting_Submitted secretary_private_comments"))
+										</span>
+									}
+									</th>
+									}
+
+																	foreach (string _url1_fieldheadercolumn in Model.GetSection("url1_fieldheadercolumn", this)){
+									<TH class="rnr-gridfieldlabel @(Model.displayVar("url1_class"))">
+									@foreach (string _url1_fieldheader in Model.GetSection("url1_fieldheader", this)){
+																				<SPAN @(Model.displayVar("url1_orderlinkattrs"))>
+											@(Model.displayVar("label ABC_Voting_Submitted url1"))
+										</span>
+									}
+									</th>
+									}
+
+																	foreach (string _url2_fieldheadercolumn in Model.GetSection("url2_fieldheadercolumn", this)){
+									<TH class="rnr-gridfieldlabel @(Model.displayVar("url2_class"))">
+									@foreach (string _url2_fieldheader in Model.GetSection("url2_fieldheader", this)){
+																				<SPAN @(Model.displayVar("url2_orderlinkattrs"))>
+											@(Model.displayVar("label ABC_Voting_Submitted url2"))
+										</span>
+									}
+									</th>
+									}
+
+																	foreach (string _url3_fieldheadercolumn in Model.GetSection("url3_fieldheadercolumn", this)){
+									<TH class="rnr-gridfieldlabel @(Model.displayVar("url3_class"))">
+									@foreach (string _url3_fieldheader in Model.GetSection("url3_fieldheader", this)){
+																				<SPAN @(Model.displayVar("url3_orderlinkattrs"))>
+											@(Model.displayVar("label ABC_Voting_Submitted url3"))
+										</span>
+									}
+									</th>
+									}
+
+																	foreach (string _url4_fieldheadercolumn in Model.GetSection("url4_fieldheadercolumn", this)){
+									<TH class="rnr-gridfieldlabel @(Model.displayVar("url4_class"))">
+									@foreach (string _url4_fieldheader in Model.GetSection("url4_fieldheader", this)){
+																				<SPAN @(Model.displayVar("url4_orderlinkattrs"))>
+											@(Model.displayVar("label ABC_Voting_Submitted url4"))
+										</span>
+									}
+									</th>
+									}
+
+																	foreach (string _date_submitted_fieldheadercolumn in Model.GetSection("date_submitted_fieldheadercolumn", this)){
+									<TH class="rnr-gridfieldlabel @(Model.displayVar("date_submitted_class"))">
+									@foreach (string _date_submitted_fieldheader in Model.GetSection("date_submitted_fieldheader", this)){
+																				<SPAN @(Model.displayVar("date_submitted_orderlinkattrs"))>
+											@(Model.displayVar("label ABC_Voting_Submitted date_submitted"))
+										</span>
+									}
+									</th>
+									}
+
+																	foreach (string _date_observed_fieldheadercolumn in Model.GetSection("date_observed_fieldheadercolumn", this)){
+									<TH class="rnr-gridfieldlabel @(Model.displayVar("date_observed_class"))">
+									@foreach (string _date_observed_fieldheader in Model.GetSection("date_observed_fieldheader", this)){
+																				<SPAN @(Model.displayVar("date_observed_orderlinkattrs"))>
+											@(Model.displayVar("label ABC_Voting_Submitted date_observed"))
+										</span>
+									}
+									</th>
+									}
+
+																	foreach (string _location_fieldheadercolumn in Model.GetSection("location_fieldheadercolumn", this)){
+									<TH class="rnr-gridfieldlabel @(Model.displayVar("location_class"))">
+									@foreach (string _location_fieldheader in Model.GetSection("location_fieldheader", this)){
+																				<SPAN @(Model.displayVar("location_orderlinkattrs"))>
+											@(Model.displayVar("label ABC_Voting_Submitted location"))
+										</span>
+									}
+									</th>
+									}
+
+																	foreach (string _status_fieldheadercolumn in Model.GetSection("status_fieldheadercolumn", this)){
+									<TH class="rnr-gridfieldlabel @(Model.displayVar("status_class"))">
+									@foreach (string _status_fieldheader in Model.GetSection("status_fieldheader", this)){
+																				<SPAN @(Model.displayVar("status_orderlinkattrs"))>
+											@(Model.displayVar("label ABC_Voting_Submitted status"))
+										</span>
+									}
+									</th>
+									}
+
+
+									
+									<th class="rnr-edge">&nbsp;</th>
+									foreach (string _endrecordheader_block in Model.GetSection("endrecordheader_block", this)){
+									<th class="rnr-cs">&nbsp;</th>
+									
+									}
+									
+									}
+									
+								</tr>
+								}
+
+						</thead>
+						<tbody>	
+															@foreach (string _grid_row in Model.GetSection("grid_row", this)){
+								<TR class="rnr-row style1 @(Model.displayVar("rowclass"))" @(Model.displayVar("rowattrs")) @(Model.displayVar("rowstyle"))>
+									@foreach (string _grid_record in Model.GetSection("grid_record", this)){
+									foreach (string _listIcons_column_1 in Model.GetSection("listIcons_column", this)){
+									<TD class="rnr-cc rnr-bc rnr-icons" iEditCont="all" @(Model.displayVar("rowstyle")) @(Model.displayVar("recordattrs"))>
+																		@foreach (string _edit_column in Model.GetSection("edit_column", this)){
+									foreach (string _edit_link in Model.GetSection("edit_link", this)){
+																			<A class="rnr-button-img" @(Model.displayVar("editlink_attrs")) data-icon="edit" title="Edit"></a>
+									}
+									}
+
+									
+									
+																		@foreach (string _view_column in Model.GetSection("view_column", this)){
+									foreach (string _view_link in Model.GetSection("view_link", this)){
+																			<A class="rnr-button-img" @(Model.displayVar("viewlink_attrs")) data-icon="view" title="View"></a>
+									}
+									}
+									</td>	
+									}	
+
+																		foreach (string _checkbox_column_1 in Model.GetSection("checkbox_column", this)){
+									<TD class="rnr-bc" iEditCont="checkBox" @(Model.displayVar("rowstyle")) @(Model.displayVar("recordattrs"))>
+									@foreach (string _checkbox in Model.GetSection("checkbox", this)){
+									<INPUT type="checkbox" @(Model.displayVar("checkbox_attrs")) />
+									}
+									</td>
+									}
+
+																		foreach (string _ABC_Voting_Submitted_dtable_column_1 in Model.GetSection("ABC_Voting_Submitted_dtable_column", this)){
+									<TD class="rnr-nowrap" @(Model.displayVar("rowstyle")) @(Model.displayVar("recordattrs"))>
+
+																		@foreach (string _dbo__ABCVotes_dtable_link in Model.GetSection("dbo__ABCVotes_dtable_link", this)){
+									<span>
+									<A @(Model.displayVar("dbo__ABCVotes_dtablelink_attrs"))>
+										ABCVotes
+																				<SPAN @(Model.displayVar("dbo__ABCVotes_childnumber_attr")) dir="ltr">@foreach (string _dbo__ABCVotes_childcount in Model.GetSection("dbo__ABCVotes_childcount", this)){<text>(</text>@(Model.displayVar("dbo__ABCVotes_childnumber"))<text>)</text>}</span>
+									</a>
+																		&nbsp;
+									</span>
+									}
+									
+									</td>
+									}
+
+										foreach (string _groupNumber_fieldcolumn in Model.GetSection("groupNumber_fieldcolumn", this)){
+	<TD class="@(Model.displayVar("groupNumber_class"))" @(Model.displayVar("groupNumber_style")) @(Model.displayVar("recordattrs"))>
+		@(Model.displayVar("groupNumber_value"))
+	</td>
+}
+
+	foreach (string _species_fieldcolumn in Model.GetSection("species_fieldcolumn", this)){
+	<TD class="@(Model.displayVar("species_class"))" @(Model.displayVar("species_style")) @(Model.displayVar("recordattrs"))>
+		@(Model.displayVar("species_value"))
+	</td>
+}
+
+	foreach (string _batch_number_fieldcolumn in Model.GetSection("batch_number_fieldcolumn", this)){
+	<TD class="@(Model.displayVar("batch_number_class"))" @(Model.displayVar("batch_number_style")) @(Model.displayVar("recordattrs"))>
+		@(Model.displayVar("batch_number_value"))
+	</td>
+}
+
+	foreach (string _secretary_comments_fieldcolumn in Model.GetSection("secretary_comments_fieldcolumn", this)){
+	<TD class="@(Model.displayVar("secretary_comments_class"))" @(Model.displayVar("secretary_comments_style")) @(Model.displayVar("recordattrs"))>
+		@(Model.displayVar("secretary_comments_value"))
+	</td>
+}
+
+	foreach (string _secretary_private_comments_fieldcolumn in Model.GetSection("secretary_private_comments_fieldcolumn", this)){
+	<TD class="@(Model.displayVar("secretary_private_comments_class"))" @(Model.displayVar("secretary_private_comments_style")) @(Model.displayVar("recordattrs"))>
+		@(Model.displayVar("secretary_private_comments_value"))
+	</td>
+}
+
+	foreach (string _url1_fieldcolumn in Model.GetSection("url1_fieldcolumn", this)){
+	<TD class="@(Model.displayVar("url1_class"))" @(Model.displayVar("url1_style")) @(Model.displayVar("recordattrs"))>
+		@(Model.displayVar("url1_value"))
+	</td>
+}
+
+	foreach (string _url2_fieldcolumn in Model.GetSection("url2_fieldcolumn", this)){
+	<TD class="@(Model.displayVar("url2_class"))" @(Model.displayVar("url2_style")) @(Model.displayVar("recordattrs"))>
+		@(Model.displayVar("url2_value"))
+	</td>
+}
+
+	foreach (string _url3_fieldcolumn in Model.GetSection("url3_fieldcolumn", this)){
+	<TD class="@(Model.displayVar("url3_class"))" @(Model.displayVar("url3_style")) @(Model.displayVar("recordattrs"))>
+		@(Model.displayVar("url3_value"))
+	</td>
+}
+
+	foreach (string _url4_fieldcolumn in Model.GetSection("url4_fieldcolumn", this)){
+	<TD class="@(Model.displayVar("url4_class"))" @(Model.displayVar("url4_style")) @(Model.displayVar("recordattrs"))>
+		@(Model.displayVar("url4_value"))
+	</td>
+}
+
+	foreach (string _date_submitted_fieldcolumn in Model.GetSection("date_submitted_fieldcolumn", this)){
+	<TD class="@(Model.displayVar("date_submitted_class"))" @(Model.displayVar("date_submitted_style")) @(Model.displayVar("recordattrs"))>
+		@(Model.displayVar("date_submitted_value"))
+	</td>
+}
+
+	foreach (string _date_observed_fieldcolumn in Model.GetSection("date_observed_fieldcolumn", this)){
+	<TD class="@(Model.displayVar("date_observed_class"))" @(Model.displayVar("date_observed_style")) @(Model.displayVar("recordattrs"))>
+		@(Model.displayVar("date_observed_value"))
+	</td>
+}
+
+	foreach (string _location_fieldcolumn in Model.GetSection("location_fieldcolumn", this)){
+	<TD class="@(Model.displayVar("location_class"))" @(Model.displayVar("location_style")) @(Model.displayVar("recordattrs"))>
+		@(Model.displayVar("location_value"))
+	</td>
+}
+
+	foreach (string _status_fieldcolumn in Model.GetSection("status_fieldcolumn", this)){
+	<TD class="@(Model.displayVar("status_class"))" @(Model.displayVar("status_style")) @(Model.displayVar("recordattrs"))>
+		@(Model.displayVar("status_value"))
+	</td>
+}
+
+
+									<TD class="rnr-edge" @(Model.displayVar("recordattrs"))>&nbsp;</td>
+									foreach (string _endrecord_block in Model.GetSection("endrecord_block", this)){
+									<TD class="rnr-cs" @(Model.displayVar("endrecordblock_attrs"))>&nbsp;</td>
+									}
+																	
+									}
+
+								</tr>
+								}
+															
+						</tbody>
+					</table>
+					
+
+}
+
+
+
+}
+
+
+
+@foreach (string _container_pagination in Model.GetSection("container_pagination", this)){
+<div class="rnr-c rnr-ch rnr-c-pagination">
+
+@foreach (string _pagination_block in Model.GetSection("pagination_block", this)){
+<DIV class="style1 rnr-bc rnr-b-pagination @(Model.displayVar("brickclass_pagination"))">@(Model.displayVar("pagination"))</div>
+}
+
+
+</div>
+}
+
+
+			</div>
+			<DIV class="rnr-right @(Model.displayVar("blockclass_right"))">
+				
+			</div>
+		</div>
+		<DIV class="rnr-bottom @(Model.displayVar("blockclass_bottom"))">
+			
+		</div>
+	</div>
+		
+		{Html.RenderSharedView("footer");}
+	}
+	</body>
+</html>

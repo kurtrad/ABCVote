@@ -1,0 +1,60 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<edit_controls>
+	<jscode>@(Model.displayVar("linkdata"))</jscode>
+	<control field="groupNumber">
+	@(Model.displayVar("groupNumber_editcontrol"))
+	</control>
+	<control field="species">
+	@(Model.displayVar("species_editcontrol"))
+	</control>
+	<control field="votingCycle">
+	@(Model.displayVar("votingCycle_editcontrol"))
+	</control>
+	<control field="batch_number">
+	@(Model.displayVar("batch_number_editcontrol"))
+	</control>
+	<control field="parent_batch_number">
+	@(Model.displayVar("parent_batch_number_editcontrol"))
+	</control>
+	<control field="url1">
+	@(Model.displayVar("url1_editcontrol"))
+	</control>
+	<control field="url2">
+	@(Model.displayVar("url2_editcontrol"))
+	</control>
+	<control field="url3">
+	@(Model.displayVar("url3_editcontrol"))
+	</control>
+	<control field="url4">
+	@(Model.displayVar("url4_editcontrol"))
+	</control>
+	<control field="date_submitted">
+	@(Model.displayVar("date_submitted_editcontrol"))
+	</control>
+	<control field="date_observed">
+	@(Model.displayVar("date_observed_editcontrol"))
+	</control>
+	<control field="submittedby">
+	@(Model.displayVar("submittedby_editcontrol"))
+	</control>
+	<control field="location">
+	@(Model.displayVar("location_editcontrol"))
+	</control>
+	<control field="status">
+	@(Model.displayVar("status_editcontrol"))
+	</control>
+	<message>@(Model.displayVar("message"))</message>
+</edit_controls>

@@ -1,0 +1,168 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<!doctype html>@(new HtmlString(MVCFunctions.GetBuferContentAndClearBufer()))
+<HTML @(Model.displayVar("html_attrs"))>
+	<head>
+		<META http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<title>@(Model.displayVar("pagetitle"))</title>
+
+		<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<LINK REL="stylesheet" href="@(webRootPath)styles/default.css" type="text/css" />
+		@foreach (string _rtlCSS in Model.GetSection("rtlCSS", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)styles/defaultRTL.css" type="text/css" />
+		}
+		@foreach (string _styleCSSFiles in Model.GetSection("styleCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("stylepath"))" type="text/css" />
+		}
+		@foreach (string _pageCSSFiles in Model.GetSection("pageCSSFiles", this)){
+		<LINK REL="stylesheet" href="@(webRootPath)@(Model.displayVar("pagestylepath"))" type="text/css" />
+		}
+	</head>
+	
+	<BODY class="@(Model.displayVar("stylename")) function-export" @(Model.displayVar("bodyattrs"))>
+	@foreach (string _body in Model.GetSection("body", this)){
+		{Html.RenderSharedView("header");}
+	<div class="rnr-page">
+		<DIV class="rnr-top @(Model.displayVar("blockclass_top"))">
+			
+
+@foreach (string _container_export in Model.GetSection("container_export", this)){
+<div class="rnr-c rnr-cv rnr-c-export">
+
+
+<DIV class="rnr-brickcontents style2 rnr-b-exportheader @(Model.displayVar("brickclass_exportheader"))"><span>	<h1>@(Model.displayVar("pagetitlelabel ABC_Voting_My_Voting export"))</h1>
+</span></div>
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-wrapper @(Model.displayVar("wrapperclass_range")) rnr-wrapper rnr-cbw-range">
+
+@foreach (string _container_range in Model.GetSection("container_range", this)){
+<div class="rnr-c rnr-cv rnr-c-range">
+
+@foreach (string _range_block in Model.GetSection("range_block", this)){
+<DIV class="rnr-brickcontents style1 rnr-b-exprange @(Model.displayVar("brickclass_exprange"))"><div class="rnr-field style2">
+Data range
+</div>
+<div class="rnr-field style1">
+<span class="rnr-hoption">
+	<INPUT TYPE="radio" class="rnr-radio-button" NAME="records" VALUE="all" CHECKED @(Model.displayVar("allpageradio_attrs")) />
+	<span class="rnr-radio-label"> All records</span>&nbsp;&nbsp;
+</span>
+<span class="rnr-hoption">
+	<INPUT TYPE="radio" class="rnr-radio-button" NAME="records" VALUE="page" @(Model.displayVar("pageradio_attrs")) />
+	<span class="rnr-radio-label">  Current page only</span>
+</span>
+</div></div>}
+
+
+</div>
+}
+
+</div>
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-wrapper @(Model.displayVar("wrapperclass_format")) rnr-wrapper rnr-cbw-format">
+
+@foreach (string _container_format in Model.GetSection("container_format", this)){
+<div class="rnr-c rnr-cv rnr-c-format">
+
+@foreach (string _exportformat in Model.GetSection("exportformat", this)){
+<DIV class="rnr-brickcontents style1 rnr-b-expformat @(Model.displayVar("brickclass_expformat"))"><div class="rnr-field style2">
+Data format
+</div>
+<div class="rnr-field style1">
+<span class="rnr-hoption">
+	<INPUT type="radio" class="rnr-radio-button" name="txtformatting" value="formatted" checked />
+	<span class="rnr-radio-label">&nbsp;formatted values</span>&nbsp;&nbsp;
+</span>
+<span class="rnr-hoption">
+	<INPUT type="radio" class="rnr-radio-button" name="txtformatting" value="raw" />
+	<span class="rnr-radio-label">&nbsp;raw values</span>
+</span>
+</div></div>}
+
+
+</div>
+}
+
+</div>
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-wrapper @(Model.displayVar("wrapperclass_fields")) rnr-wrapper rnr-cbw-fields">
+
+@foreach (string _container_fields in Model.GetSection("container_fields", this)){
+<div class="rnr-c rnr-cv rnr-c-fields">
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-expoutput @(Model.displayVar("brickclass_expoutput"))"><div class="rnr-field style2">
+Output format	
+</div>
+<div class="rnr-field style1">
+	<INPUT TYPE="radio" class="rnr-radio-button" NAME="type" VALUE="excel" CHECKED @(Model.displayVar("excelradio_attrs")) /><span class="rnr-radio-label"> <IMG src="@(webRootPath)images/excel.gif" align="absmiddle" alt=" " />&nbsp;Excel</span>
+</div>
+<div class="rnr-field style1">
+	<INPUT TYPE="radio" class="rnr-radio-button" NAME="type" VALUE="word" @(Model.displayVar("wordradio_attrs")) /><span class="rnr-radio-label"> <IMG src="@(webRootPath)images/word.gif" align="absmiddle" alt=" " />&nbsp;Word</span>
+</div>
+<div class="rnr-field style1">
+	<INPUT TYPE="radio" class="rnr-radio-button" NAME="type" VALUE="csv" @(Model.displayVar("csvradio_attrs")) /><span class="rnr-radio-label"> <IMG src="@(webRootPath)images/csv.gif" align="absmiddle" alt=" " />&nbsp;CSV (comma separated values)</span>
+</div>
+<div class="rnr-field style1">
+	<INPUT TYPE="radio" class="rnr-radio-button" NAME="type" VALUE="xml" @(Model.displayVar("xmlradio_attrs")) /><span class="rnr-radio-label"> <IMG src="@(webRootPath)images/xml.gif" align="absmiddle" alt=" " />&nbsp;XML</span>
+</div>
+</div>
+
+
+</div>
+}
+
+</div>
+
+
+
+<DIV class="rnr-brickcontents style2 rnr-b-expbuttons @(Model.displayVar("brickclass_expbuttons"))"><A href="#" class="rnr-button main" @(Model.displayVar("exportlink_attrs"))>Export</a>
+@foreach (string _cancel_button in Model.GetSection("cancel_button", this)){
+<A class="rnr-button" id="cancelButton@(Model.displayVar("id"))" href="#">Cancel</a>
+}
+</div>
+
+
+</div>
+}
+
+
+		</div>
+		<div class="rnr-middle">
+			<DIV class="rnr-left @(Model.displayVar("blockclass_left"))">
+				
+			</div>
+			<DIV class="rnr-center @(Model.displayVar("blockclass_center"))">
+				
+			</div>
+			<DIV class="rnr-right @(Model.displayVar("blockclass_right"))">
+				
+			</div>
+		</div>
+		<DIV class="rnr-bottom @(Model.displayVar("blockclass_bottom"))">
+			
+		</div>
+	</div>
+		
+		{Html.RenderSharedView("footer");}
+	}
+	</body>
+</html>

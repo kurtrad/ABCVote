@@ -1,0 +1,75 @@
+﻿@using runnerDotNet;
+@{
+ XTempl Model = this.Model;
+ if(ViewBag != null && ViewBag.xt != null)
+ {
+  Model = ViewBag.xt;
+  if(Model != null)
+  {
+   Model.currentViewContext = ViewContext;
+  }
+ }
+ string webRootPath = MVCFunctions.GetWebRootPath();
+}
+
+<DIV @(Model.displayVar("pageattrs"))>
+
+@foreach (string _container_dcount in Model.GetSection("container_dcount", this)){
+<div class="rnr-c rnr-cv rnr-c-dcount">
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-detailspreviewheader @(Model.displayVar("brickclass_detailspreviewheader"))">	<h1>@(Model.displayVar("pagetitlelabel dbo__ABCVotes detailspreview"))</h1>
+</div>
+
+
+
+<DIV class="rnr-brickcontents style1 rnr-b-detailspreviewdetailsfount @(Model.displayVar("brickclass_detailspreviewdetailsfount"))">Details found: <strong>@(Model.displayVar("row_count")).</strong>
+</div>
+
+
+@foreach (string _display_first in Model.GetSection("display_first", this)){
+<DIV class="rnr-brickcontents style1 rnr-b-detailspreviewdispfirst @(Model.displayVar("brickclass_detailspreviewdispfirst"))">Displaying first: <strong>@(Model.displayVar("display_count"))</strong>.
+</div>}
+
+
+</div>
+}
+
+
+
+@foreach (string _container_detailspreviewgrid in Model.GetSection("container_detailspreviewgrid", this)){
+
+
+foreach (string _details_data in Model.GetSection("details_data", this)){
+<table class="rnr-c rnr-cont rnr-c--detailspreviewgrid rnr-b-detailspreviewgrid rnr-gridtable">
+@foreach (string _details_row_header in Model.GetSection("details_row_header", this)){
+	<thead>
+		<TR class="rnr-toprow style1 @(Model.displayVar("gridHeader_class"))">
+			<TH class="@(Model.displayVar("committee_member_class"))">@(Model.displayVar("label dbo__ABCVotes committee_member"))</th>
+			<TH class="@(Model.displayVar("date_voted_class"))">@(Model.displayVar("label dbo__ABCVotes date_voted"))</th>
+			<TH class="@(Model.displayVar("vote_class"))">@(Model.displayVar("label dbo__ABCVotes vote"))</th>
+			<TH class="@(Model.displayVar("comment_class"))">@(Model.displayVar("label dbo__ABCVotes comment"))</th>
+			<th class="rnr-edge">&nbsp;</th>
+		</tr>
+	</thead>
+}
+	<tbody>
+@foreach (string _details_row in Model.GetSection("details_row", this)){
+		<tr class="rnr-row style1">
+			<TD class="@(Model.displayVar("committee_member_class"))">@(Model.displayVar("committee_member_value"))</td>
+			<TD class="@(Model.displayVar("date_voted_class"))">@(Model.displayVar("date_voted_value"))</td>
+			<TD class="@(Model.displayVar("vote_class"))">@(Model.displayVar("vote_value"))</td>
+			<TD class="@(Model.displayVar("comment_class"))">@(Model.displayVar("comment_value"))</td>
+			<td class="rnr-edge">&nbsp;</td>
+		</tr>
+}	
+	</tbody>
+</table>
+
+}
+
+
+
+}
+
+</div>
